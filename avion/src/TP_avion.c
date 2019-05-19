@@ -24,16 +24,17 @@ int main() {
 	//direccionServidor = crearServidor("127.0.0.1", "8080");
 
 	//se pide un socket que devuelve un valor
-	int cliente = socket(AF_INET, SOCK_STREAM, 0);
+	int servidorTorreControl = socket(AF_INET, SOCK_STREAM, 0);
 
-	if(connect(cliente, (void *) &direccionServidor, sizeof(direccionServidor)) != 0){
+	if(connect(servidorTorreControl, (void *) &direccionServidor, sizeof(direccionServidor)) != 0){
 		perror("No se pudo conectar");
 		return 1;
 	}
 
+
 	//----------------------------------
-	char enviaMsjAServidor[LONG_MSG_SERV];
-	memset(enviaMsjAServidor, '\0', LONG_MSG_SERV);
+	char msjAServidor[LONG_MSG_SERV];
+	memset(msjAServidor, '\0', LONG_MSG_SERV);
 
 	ST_MENSAJE msj;
 	inicializarST_MENSAJE(&msj);
@@ -44,15 +45,15 @@ int main() {
 	printf("Se envia destino: %s\n", msj.destino);
 	printf("Se envia mensaje: %s\n", msj.mensaje);
 
-	strcpy(enviaMsjAServidor, msj.origen);
-	strcat(enviaMsjAServidor, ";");
-	strcat(enviaMsjAServidor, msj.destino);
-	strcat(enviaMsjAServidor, ";");
-	strcat(enviaMsjAServidor, msj.mensaje);
+	strcpy(msjAServidor, msj.origen);
+	strcat(msjAServidor, ";");
+	strcat(msjAServidor, msj.destino);
+	strcat(msjAServidor, ";");
+	strcat(msjAServidor, msj.mensaje);
 
-	printf("Mensaje: %s\n", enviaMsjAServidor);
+	printf("Mensaje: %s\n", msjAServidor);
 
-	send(cliente, enviaMsjAServidor, sizeof(char)*(LONG_MSG_SERV), MSG_WAITALL);
+	send(servidorTorreControl, msjAServidor, sizeof(char)*(LONG_MSG_SERV), MSG_WAITALL);
 
 	return EXIT_SUCCESS;
 }
