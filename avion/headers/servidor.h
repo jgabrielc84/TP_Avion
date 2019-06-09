@@ -15,7 +15,9 @@
 #include <sys/socket.h>
 
 
-struct sockaddr_in crearServidor(const char * ip, const char * puerto);
+struct sockaddr_in crearServidor(FILE * ptrArchivo);
+
+void conectaConexionServ(int * servidorTorreControl, struct sockaddr_in * direccionServidor);
 
 
 #endif /* HEADERS_SERVIDOR_H_ */

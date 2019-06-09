@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1560038788 source:/home/gabriel/git/TPavionRepository/avion/sources/archivo.c
+	<stdio.h>
+	<stdlib.h>
+	"../headers/archivo.h"
+
+1559447358 /home/gabriel/git/TPavionRepository/avion/headers/archivo.h
+
+1558286181 source:/home/gabriel/git/TPavionRepository/avion/sources/avion.c
+	"../headers/avion.h"
+
+1559083766 /home/gabriel/git/TPavionRepository/avion/headers/avion.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1558286181 source:/home/gabriel/git/TPavionRepository/avion/sources/mensaje.c
+	"../headers/mensaje.h"
+
+1558286181 /home/gabriel/git/TPavionRepository/avion/headers/mensaje.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1559698309 source:/home/gabriel/git/TPavionRepository/avion/sources/servidor.c
+	"../headers/servidor.h"
+
+1559448770 /home/gabriel/git/TPavionRepository/avion/headers/servidor.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<arpa/inet.h>
+	<sys/socket.h>
+
+1559692515 source:/home/gabriel/git/TPavionRepository/avion/sources/TP_avion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<arpa/inet.h>
+	<sys/socket.h>
+	"../headers/servidor.h"
+	"../headers/mensaje.h"
+	"../headers/avion.h"
+	"../headers/archivo.h"
+

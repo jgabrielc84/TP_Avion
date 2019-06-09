@@ -20,3 +20,10 @@ void crearSTMensaje(ST_MENSAJE * msj, const char * ipOrigen, const char * ipDest
 	strcpy(msj->mensaje, mensaje);
 }
 
+void codificarMensaje(char * msjAServidor, const ST_MENSAJE *msj){
+	strcpy(msjAServidor, msj->origen);
+	strcat(msjAServidor, ";");
+	strcat(msjAServidor, msj->destino);
+	strcat(msjAServidor, ";");
+	strcat(msjAServidor, msj->mensaje);
+}

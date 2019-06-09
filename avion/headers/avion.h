@@ -29,6 +29,6 @@ typedef struct{
 }ST_AVION;
 
 
-
+void altaAvion();
 
 #endif /* HEADERS_AVION_H_ */
