@@ -11,15 +11,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include "../headers/avion.h"
+#include "../headers/mensaje.h"
+#include "../headers/servidor.h"
 
-enum ESTADOAVION{
-	SALIR_SISTEMA,
-	ALTA_AVION,
-	REGISTRAR_AVION,
-	PEDIR_PISTA,
-	ESTADO_AVION
+enum MENUOPCION{
+	MENU_SALIR_SISTEMA,
+	MENU_REGISTRAR_AVION,
+	MENU_PEDIR_PISTA,
+	MENU_ESTADO_AVION
 };
 
-void iniciaMenu();
+void iniciaMenuAvion(ST_AVION *, char *, const int *);
 
 #endif /* HEADERS_CONSOLA_H_ */

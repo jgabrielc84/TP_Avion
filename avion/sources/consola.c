@@ -6,45 +6,45 @@
  */
 
 #include "../headers/consola.h"
-#include "../headers/avion.h"
 
+void mostrarMenuPrincipal(){
+	printf("\t-Menu AVION-\n\n");
+	printf("[1] - Registrar en torre de control\n");
+	printf("[2] - Pedir pista\n");
+	printf("[3] - Estado\n");
+	printf("[0] - Salir\n\n");
+	printf("\tOpcion: ");
+}
 
-void iniciaMenu(){
+void iniciaMenuAvion(ST_AVION * avion, char * msjServidor, const int * servidorTorreControl){
 	int opcion = -1;
 
-	system("clear");
-
-	while(opcion != SALIR_SISTEMA && opcion != ALTA_AVION && opcion != REGISTRAR_AVION && opcion != PEDIR_PISTA && opcion != ESTADO_AVION){
-		printf("\tBienvenido al sistema AVION!\n\n");
-		printf("[1] - Alta de avion\n");
-		printf("[2] - Registrar en torre de control\n");
-		printf("[3] - Pedir pista\n");
-		printf("[4] - Estado\n");
-		printf("[0] - Salir\n\n");
-		printf("\tOpcion: ");
+	while(opcion != MENU_SALIR_SISTEMA && opcion != MENU_REGISTRAR_AVION && opcion != MENU_PEDIR_PISTA && opcion != MENU_ESTADO_AVION){
+		system("clear");
+		mostrarMenuPrincipal();
 		scanf("%d", &opcion);
 
 		switch(opcion){
-		case ALTA_AVION:
-			//altaAvion();
+		case MENU_REGISTRAR_AVION:
+			registrarAvion(msjServidor, avion, &opcion, servidorTorreControl);
+
+			opcion = -1;
 			break;
-		case REGISTRAR_AVION:
-			//registracionTorreControl();
-			break;
-		case PEDIR_PISTA:
+		case MENU_PEDIR_PISTA:
 			//pedirPista();
+			opcion = -1;
 			break;
-		case ESTADO_AVION:
+		case MENU_ESTADO_AVION:
 			//estadoAvion();
+			opcion = -1;
 			break;
-		case SALIR_SISTEMA:
+		case MENU_SALIR_SISTEMA:
 			system("clear");
 			printf("Que tenga un buen dia!\n\n");
 			break;
 		default:
 			printf("\nLa opcion elegida es incorrecta!\n\n");
 			sleep(3);
-			system("clear");
 			break;
 		}
 	}

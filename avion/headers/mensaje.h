@@ -11,24 +11,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../headers/avion.h"
 
-#define LONG_ORIGEN 20
-#define LONG_DESTINO 20
-#define LONG_MENSAJE 50
-#define LONG_MSG_SERV LONG_ORIGEN+LONG_DESTINO+LONG_MENSAJE+3
-#define LONG_MSG_RECIBIDO 100
+#define LONG_MSG_SERV 100+1
 
-typedef struct{
-	char origen[LONG_ORIGEN+1];
-	char destino[LONG_DESTINO+1];
-	char mensaje[LONG_MENSAJE+1];
-}ST_MENSAJE;
+void liberaBuffer();
 
-
-void inicializarST_MENSAJE(ST_MENSAJE * mensaje);
-
-void crearSTMensaje(ST_MENSAJE * msj, const char * ipOrigen, const char * ipDestino, const char * mensaje);
-
-void codificarMensaje(char * msjAServidor, const ST_MENSAJE *msj);
+void formatearMensaje(char *, const ST_AVION *, const int *);
 
 #endif /* HEADERS_MENSAJE_H_ */

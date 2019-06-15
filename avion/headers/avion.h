@@ -16,19 +16,25 @@
 #define LONG_MODELO 20
 
 
-enum ESTADO_AVION{
-	HANGAR,
-	LISTO
+enum AVIONESTADO{
+	AVION_HANGAR,
+	AVION_LISTO_HANGAR,
+	AVION_LISTO_DESPEGAR,
+	AVION_DESPEGANDO,
+	AVION_EN_VUELO,
+	AVION_ESPERA_ATERRIZAR,
+	AVION_ATERRIZANDO,
 };
 
 typedef struct{
 	char identificador[LONG_IDENTIFICADOR+1];
 	char modelo[LONG_MODELO+1];
 	int combustible;
-	char estado;
+	enum AVIONESTADO estado;
 }ST_AVION;
 
 
-void altaAvion();
+void inicializarST_AVION(ST_AVION * avion);
+
 
 #endif /* HEADERS_AVION_H_ */
