@@ -13,8 +13,8 @@ struct sockaddr_in crearServidor(const char * ip, const int * puerto){
 	struct sockaddr_in servidor;
 
 	servidor.sin_family = AF_INET;
-	servidor.sin_addr.s_addr = inet_addr(ip);//cambiar a variable ip 127.0.0.1
-	servidor.sin_port = htons(*puerto);//cambiar a variable puerto
+	servidor.sin_addr.s_addr = inet_addr(ip);
+	servidor.sin_port = htons(*puerto);
 
 	return servidor;
 }
@@ -32,8 +32,8 @@ void registrarAvion(char * msjServidor, ST_AVION * avion, const int * opcion, co
 	formatearMensaje(msjServidor, avion, opcion);
 
 	printf("Mensaje a enviar: %s\n\n", msjServidor);
-
+	printf("%d", *servidorTorreControl);
 	send(*servidorTorreControl, msjServidor, sizeof(char)*(LONG_MSG_SERV), 0); //Se envia al servidor el mensaje formateado
-
+	sleep(5);
 
 }

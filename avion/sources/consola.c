@@ -20,7 +20,7 @@ void iniciaMenuAvion(ST_AVION * avion, char * msjServidor, const int * servidorT
 	int opcion = -1;
 
 	while(opcion != MENU_SALIR_SISTEMA && opcion != MENU_REGISTRAR_AVION && opcion != MENU_PEDIR_PISTA && opcion != MENU_ESTADO_AVION){
-		system("clear");
+		//system("clear");
 		mostrarMenuPrincipal();
 		scanf("%d", &opcion);
 

@@ -34,7 +34,10 @@ typedef struct{
 }ST_AVION;
 
 
-void inicializarST_AVION(ST_AVION * avion);
+void inicializarST_AVION(ST_AVION * avion, char** argv);
+
+void comprobarAvion(ST_AVION *avion);
+
 
 
 #endif /* HEADERS_AVION_H_ */

@@ -28,13 +28,6 @@ int main(int argc, char * argv[]) {
 
 	system("clear");
 
-	//sacar luego
-	while(*argv){
-		printf("%s\n", *argv);
-		argv++;
-	}
-
-	printf("\n\n");
 
 	//VARIABLES
 	FILE * ptrArchivoConfigServ = NULL;
@@ -49,9 +42,11 @@ int main(int argc, char * argv[]) {
 	//INICIALIZAR VARIABLES
 	memset(msjServidor, '\0', LONG_MSG_SERV);
 	memset(ipServidor, '\0', LONG_IP_SERV);
-	inicializarST_AVION(avion);
+	inicializarST_AVION(avion, argv);
 
-	printf("Wait windows 1\n\n");
+	comprobarAvion(avion);
+
+	printf("Wait windows 1\n\n");;
 
 	//abrirArchivoConfigServ(ptrArchivoConfigServ);
 	//-------------El archivo se habre en el main porque falla la funcion(no encuentro el error)

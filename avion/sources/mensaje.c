@@ -7,8 +7,7 @@
 
 #include "../headers/mensaje.h"
 
-#define LONG_COMBUSTIBLE 10+1
-#define LONG_OPCIONAVION 1+1
+
 
 void liberaBuffer(){
 	char c;
@@ -24,8 +23,6 @@ void formatearMensaje(char * msjServidor, const ST_AVION * avion, const int * op
 	sprintf(combustibleAvion, "%d", avion->combustible);
 	sprintf(opcionAvion, "%d", *opcion);
 
-	printf("%s", combustibleAvion);// para probar
-	printf("%s", opcionAvion);// para probar
 
 	strcpy(msjServidor, avion->identificador);
 	strcat(msjServidor, "|");
