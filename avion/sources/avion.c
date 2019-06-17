@@ -46,10 +46,33 @@ void comprobarAvion(ST_AVION * avion){
 		fread(avionAComprobar, sizeof(ST_AVION), 1, ptrArchivo);
 		if(strcmp(avion->identificador, avionAComprobar->identificador) ==0 && strcmp(avion->modelo, avionAComprobar->modelo) ==0){
 		   printf("Los datos del avion son correctos.\n");
+		   return;
 		}
 		else{
 		   printf("Los datos del avion son incorrectos.\n");
 		   exit(EXIT_FAILURE);
 		}
 	}
+	fclose(ptrArchivo);
 }
+
+//METODO NUEVO
+/*void pedirEstado(char * msjServidor, ST_AVION * avion, const int * servidorTorreControl){
+
+	send(servidorTorreControl, avion, sizeof(ST_AVION), 0);
+	recv(servidorTorreControl, avion, sizeof(ST_AVION), 0);
+
+	printf("El estado del avion: %s \n", avion->identificador );
+	printf("Modelo: %s\n", avion->modelo );
+	printf("Cantidad de combustible: %d\n", avion->combustible);
+	printf("Estado actual: %s\n", avion->estado);
+
+
+
+}*/
+
+
+
+
+
+
