@@ -1,4 +1,4 @@
-/*
+/* TP_avion
  * servidor.c
  *
  *  Created on: 15 may. 2019
@@ -9,7 +9,7 @@
 
 
 struct sockaddr_in crearServidor(const char * ip, const int * puerto){
-	printf("crearServidor\n");
+	printf("*crearServidor*\n");
 	struct sockaddr_in servidor;
 
 	servidor.sin_family = AF_INET;
@@ -19,21 +19,34 @@ struct sockaddr_in crearServidor(const char * ip, const int * puerto){
 	return servidor;
 }
 
-void conectaConexionServ(int * servidorTorreControl, struct sockaddr_in * direccionServidor){
+void conectarConServidor(int * servidorTorreControl, struct sockaddr_in * direccionServidor){
+	printf("conectaConexionServ\n");
 	if(connect(*servidorTorreControl, (void *) direccionServidor, sizeof(*direccionServidor)) != 0){
-		perror("No se pudo conectar al servidor");
+		perror("No se pudo conectar al servidor\n");
+		exit(EXIT_FAILURE);
+	}
+}
+
+void enviarMensajeAServidor(const int * servidorTorreControl, const char * msjServidor){
+	send(*servidorTorreControl, msjServidor, sizeof(char)*(LONG_MSJ_SERV), 0); //Se envia al servidor el mensaje formateado
+}
+
+void recibirMensaje(int * bytesRecibidos, int * servidorTorreControl, char * msjServidor){
+	printf("*recibirMensaje*\n");
+	*bytesRecibidos = recv(*servidorTorreControl, msjServidor, sizeof(char)*LONG_MSJ_SERV, 0);
+
+	if(*bytesRecibidos < 0){
+		printf("Error al recibir mensaje\n");
 		exit(EXIT_FAILURE);
 	}
 }
 
 void registrarAvion(char * msjServidor, ST_AVION * avion, const int * opcion, const int * servidorTorreControl){
-	printf("Registrando avion %s en torre de control\n\n", avion->modelo);
+	printf("Registrando avion %s en torre de control\n", avion->modelo);
 
 	formatearMensaje(msjServidor, avion, opcion);
+	printf("Mensaje a enviar: %s\n", msjServidor); //BORRAR
+	enviarMensajeAServidor(servidorTorreControl, msjServidor);
 
-	printf("Mensaje a enviar: %s\n\n", msjServidor);
-	printf("%d", *servidorTorreControl);
-	send(*servidorTorreControl, msjServidor, sizeof(char)*(LONG_MSG_SERV), 0); //Se envia al servidor el mensaje formateado
 	sleep(5);
-
 }

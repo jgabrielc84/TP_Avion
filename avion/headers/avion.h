@@ -1,4 +1,4 @@
-/*
+/* TP_avion
  * avion.h
  *
  *  Created on: 15 may. 2019
@@ -12,8 +12,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define LONG_IDENTIFICADOR 8
-#define LONG_MODELO 20
+#define LONG_IDENTIFICADOR 8+1
+#define LONG_MODELO 20+1
 
 
 enum AVIONESTADO{
@@ -27,17 +27,16 @@ enum AVIONESTADO{
 };
 
 typedef struct{
-	char identificador[LONG_IDENTIFICADOR+1];
-	char modelo[LONG_MODELO+1];
+	char identificador[LONG_IDENTIFICADOR];
+	char modelo[LONG_MODELO];
 	int combustible;
 	enum AVIONESTADO estado;
 }ST_AVION;
 
 
-void inicializarST_AVION(ST_AVION * avion, char** argv);
+void inicializarAvion(ST_AVION *, char**);
 
-void comprobarAvion(ST_AVION *avion);
-
+void comprobarAvion(ST_AVION *);
 
 
 #endif /* HEADERS_AVION_H_ */

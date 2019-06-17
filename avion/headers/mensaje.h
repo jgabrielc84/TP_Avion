@@ -1,4 +1,4 @@
-/*
+/* TP_avion
  * mensaje.h
  *
  *  Created on: 15 may. 2019
@@ -13,12 +13,17 @@
 #include <string.h>
 #include "../headers/avion.h"
 
-#define LONG_MSG_SERV 100+1
-#define LONG_COMBUSTIBLE 10+1
+#define LONG_MSJ_SERV 100+1
+#define LONG_COMBUSTIBLEAVION 10+1
+#define LONG_ESTADOAVION 1+1
 #define LONG_OPCIONAVION 1+1
 
 void liberaBuffer();
 
+void inicializarMsjServidor(char *);
+
 void formatearMensaje(char *, const ST_AVION *, const int *);
+
+void mostrarMensaje(char *);
 
 #endif /* HEADERS_MENSAJE_H_ */

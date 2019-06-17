@@ -1,4 +1,4 @@
-/*
+/* TP_avion
  * servidor.h
  *
  *  Created on: 15 may. 2019
@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include "../headers/mensaje.h"
@@ -20,11 +21,13 @@
 #define LONG_PUERTO_SERV 5+1
 
 
-
 struct sockaddr_in crearServidor(const char *, const int *);
 
-void conectaConexionServ(int *, struct sockaddr_in *);
+void conectarConServidor(int *, struct sockaddr_in *);
+
+void recibirMensaje(int *, int *, char *);
 
 void registrarAvion(char *, ST_AVION *, const int *, const int *);
+
 
 #endif /* HEADERS_SERVIDOR_H_ */
