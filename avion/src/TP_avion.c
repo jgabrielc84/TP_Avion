@@ -21,13 +21,9 @@
 
 
 int main(int argc, char * argv[]) {
-	if(argc != 4){
-		printf("Error al ejecutar el archivo!\n\n");
-		exit(EXIT_FAILURE);
-	}
+	comprobarParametrosInicio(&argc);
 
 	system("clear");
-
 
 	//VARIABLES
 	FILE * ptrArchivoConfigServ = NULL;
@@ -67,26 +63,12 @@ int main(int argc, char * argv[]) {
 
 	conectarConServidor(&servidorTorreControl, &direccionServidor);
 
-	recibirMensaje(&bytesRecibidos, &servidorTorreControl, msjServidor);
-	//parsearMensaje(avion, &opcion, msjServidor);
-	mostrarMensaje(msjServidor);
+	//recibirMensaje(&bytesRecibidos, &servidorTorreControl, msjServidor);
+	//mostrarMensaje(msjServidor);
 
-	//----------------------------------
 	sleep(5);
 
-	iniciaMenuAvion(avion, msjServidor, &servidorTorreControl);
-	/*
-	//Se recibe respuesta del servidor
-	memset(msjRecibido, '\0', LONG_MSG_RECIBIDO);//Se setea nuevamente para recibir el mensaje limpio
-	bytesRecibidos = recv(servidorTorreControl, msjRecibido, LONG_MSG_RECIBIDO, 0);
-
-	if(bytesRecibidos < 0){
-		perror("el cliente se ha desconectado del servidor\n\n");
-		return 1;
-	}else{
-		printf("%s\n", msjRecibido);
-	}
-	*/
+	iniciaMenuAvion(avion, msjServidor, &servidorTorreControl, &bytesRecibidos);
 
 	free(msjServidor); //Libera punteros
 	free(ipServidor);
@@ -94,4 +76,3 @@ int main(int argc, char * argv[]) {
 
 	return EXIT_SUCCESS;
 }
-

@@ -13,6 +13,8 @@
 #include "../headers/mensaje.h"
 
 
+void comprobarParametrosInicio(int * argc);
+
 void abrirArchivoConfigServ(FILE *);
 
 void leerIpPuertoDeArchivo(FILE *, char *, int *);

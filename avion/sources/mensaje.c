@@ -46,5 +46,5 @@ void formatearMensaje(char * msjServidor, const ST_AVION * avion, const int * op
 }
 
 void mostrarMensaje(char * msjServidor){
-	printf("Mensaje recibido: %s\n", msjServidor);
+	printf("Mensaje recibido:\n\n %s\n", msjServidor);
 }

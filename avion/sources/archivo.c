@@ -11,6 +11,13 @@
 #define LONG_LINEALEIDA 30
 
 
+void comprobarParametrosInicio(int * argc){
+	if(*argc != 4){
+		printf("Error al ejecutar el archivo!\n\n");
+		exit(EXIT_FAILURE);
+	}
+}
+
 void abrirArchivoConfigServ(FILE * ptrArchivoConfigServ){
 	printf("*abrirArchivoConfigServ*\n");
 	if((ptrArchivoConfigServ = fopen("config.txt", "r")) == NULL){

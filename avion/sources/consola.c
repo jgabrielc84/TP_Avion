@@ -16,7 +16,7 @@ void mostrarMenuPrincipal(){
 	printf("\tOpcion: ");
 }
 
-void iniciaMenuAvion(ST_AVION * avion, char * msjServidor, const int * servidorTorreControl){
+void iniciaMenuAvion(ST_AVION * avion, char * msjServidor, const int * servidorTorreControl, const int * bytesRecibidos){
 	int opcion = -1;
 
 	while(opcion != MENU_SALIR_SISTEMA && opcion != MENU_REGISTRAR_AVION && opcion != MENU_PEDIR_PISTA && opcion != MENU_ESTADO_AVION){
@@ -27,7 +27,8 @@ void iniciaMenuAvion(ST_AVION * avion, char * msjServidor, const int * servidorT
 		switch(opcion){
 		case MENU_REGISTRAR_AVION:
 			registrarAvion(msjServidor, avion, &opcion, servidorTorreControl);
-
+			//recibirMensaje(&bytesRecibidos, &servidorTorreControl, msjServidor);
+			//mostrarMensaje(msjServidor);
 			opcion = -1;
 			break;
 		case MENU_PEDIR_PISTA:
