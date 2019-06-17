@@ -25,6 +25,8 @@ void inicializarAvion(ST_AVION * avion, char** argv){
 	printf("%s\n", avion->identificador); //BORRAR
 	printf("%s\n", avion->modelo); //BORRAR
 	printf("%d\n", avion->combustibleActual); //BORRAR
+	printf("%d\n", avion->combustibleMaximo); //BORRAR
+
 }
 
 
@@ -41,7 +43,7 @@ void comprobarAvion(ST_AVION * avion){
 			printf("No se pudo crear el archivo.\n");
 			exit(EXIT_FAILURE);
 		}else{
-			printf("%s", avion->modelo);
+			printf("%s", avion->modelo);  //BORRAR
 			fwrite(avion, sizeof(ST_AVION), 1, ptrArchivo);
 		}
 	}else{

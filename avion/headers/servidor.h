@@ -29,7 +29,7 @@ void recibirMensaje(int *, int *, char *);
 
 void registrarAvion(char *, ST_AVION *, const int *, const int *);
 
-void pedirEstadoAvion(char * msjServidor, ST_AVION * avion, const int * servidorTorreControl);
+void pedirEstadoAvion(char * msjServidor, ST_AVION * avion, const int * opcion, const int * servidorTorreControl);
 
 
 

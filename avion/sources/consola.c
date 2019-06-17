@@ -28,6 +28,7 @@ void iniciaMenuAvion(ST_AVION * avion, char * msjServidor, const int * servidorT
 		case MENU_REGISTRAR_AVION:
 			registrarAvion(msjServidor, avion, &opcion, servidorTorreControl);
 			//recibirMensaje(&bytesRecibidos, &servidorTorreControl, msjServidor);
+			//parsearMensaje();
 			//mostrarMensaje(msjServidor);
 			opcion = -1;
 			break;
@@ -36,7 +37,7 @@ void iniciaMenuAvion(ST_AVION * avion, char * msjServidor, const int * servidorT
 			opcion = -1;
 			break;
 		case MENU_ESTADO_AVION:
-			pedirEstadoAvion(msjServidor, avion, servidorTorreControl);
+			pedirEstadoAvion(msjServidor, avion, &opcion, servidorTorreControl);
 			opcion = -1;
 			break;
 		case MENU_SALIR_SISTEMA:
