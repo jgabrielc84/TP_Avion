@@ -15,14 +15,16 @@ void inicializarAvion(ST_AVION * avion, char** argv){
 	memset(avion->modelo, '\0', LONG_MODELO);
 	memset(avion->identificador, '\0', LONG_IDENTIFICADOR);
 	avion->estado = AVION_HANGAR;
-	avion->combustible = 0;
+	avion->combustibleActual = 0;
+	avion->combustibleMaximo=0;
 	strcpy(avion->identificador, argv[1]);
 	strcpy(avion->modelo, argv[2]);
 	sscanf(argv[3], "%d", &combustibleAvion);
-	avion->combustible = combustibleAvion;
+	avion->combustibleActual = combustibleAvion;
+	avion->combustibleMaximo = combustibleAvion;
 	printf("%s\n", avion->identificador); //BORRAR
 	printf("%s\n", avion->modelo); //BORRAR
-	printf("%d\n", avion->combustible); //BORRAR
+	printf("%d\n", avion->combustibleActual); //BORRAR
 }
 
 
@@ -56,20 +58,7 @@ void comprobarAvion(ST_AVION * avion){
 	fclose(ptrArchivo);
 }
 
-//METODO NUEVO
-/*void pedirEstado(char * msjServidor, ST_AVION * avion, const int * servidorTorreControl){
 
-	send(servidorTorreControl, avion, sizeof(ST_AVION), 0);
-	recv(servidorTorreControl, avion, sizeof(ST_AVION), 0);
-
-	printf("El estado del avion: %s \n", avion->identificador );
-	printf("Modelo: %s\n", avion->modelo );
-	printf("Cantidad de combustible: %d\n", avion->combustible);
-	printf("Estado actual: %s\n", avion->estado);
-
-
-
-}*/
 
 
 

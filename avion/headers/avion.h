@@ -29,7 +29,8 @@ enum AVIONESTADO{
 typedef struct{
 	char identificador[LONG_IDENTIFICADOR];
 	char modelo[LONG_MODELO];
-	int combustible;
+	int combustibleActual;
+	int combustibleMaximo;
 	enum AVIONESTADO estado;
 }ST_AVION;
 
@@ -37,6 +38,7 @@ typedef struct{
 void inicializarAvion(ST_AVION *, char**);
 
 void comprobarAvion(ST_AVION *);
+
 
 
 #endif /* HEADERS_AVION_H_ */
