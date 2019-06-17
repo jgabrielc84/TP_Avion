@@ -13,16 +13,22 @@ void liberarBuffer(){
 	while((c = getchar()) != '\n' && c != EOF);
 }
 
+
+
+
+
 void inicializarMsjServidor(char * msjServidor){
 	memset(msjServidor, '\0', LONG_MSJ_SERV);
 }
 
-void concatenarMsjServidor(char * msjServidor, const ST_AVION * avion,const char * combustibleAvion, const char * estadoAvion, const char * opcionAvion){
+void concatenarMsjServidor(char * msjServidor, const ST_AVION * avion,const char * combustibleActAvion, const char * combustibleMaxAvion, const char * estadoAvion, const char * opcionAvion){
 	strcpy(msjServidor, avion->identificador);
 	strcat(msjServidor, "|");
 	strcat(msjServidor, avion->modelo);
 	strcat(msjServidor, "|");
-	strcat(msjServidor, combustibleAvion);
+	strcat(msjServidor, combustibleActAvion);
+	strcat(msjServidor, "|");
+	strcat(msjServidor, combustibleMaxAvion);
 	strcat(msjServidor, "|");
 	strcat(msjServidor, estadoAvion);
 	strcat(msjServidor, "|");
@@ -30,19 +36,23 @@ void concatenarMsjServidor(char * msjServidor, const ST_AVION * avion,const char
 }
 
 void formatearMensaje(char * msjServidor, const ST_AVION * avion, const int * opcion){
-	char * combustibleAvion = malloc(sizeof(char)*LONG_COMBUSTIBLEAVION);
+	char * combustibleActAvion = malloc(sizeof(char)*LONG_COMBUSTIBLEAVION);
 	char * estadoAvion = malloc(sizeof(char)*LONG_ESTADOAVION);
 	char * opcionAvion = malloc(sizeof(char)*LONG_OPCIONAVION);
-	memset(combustibleAvion, '\0', LONG_COMBUSTIBLEAVION);
+	char * combustibleMaxAvion = malloc(sizeof(char)*(LONG_COMBUSTIBLEAVION));
+	memset(combustibleActAvion, '\0', LONG_COMBUSTIBLEAVION);
+	memset(combustibleMaxAvion, '\0', LONG_COMBUSTIBLEAVION);
 	memset(estadoAvion, '\0', LONG_ESTADOAVION);
 	memset(opcionAvion, '\0', LONG_OPCIONAVION);
 	inicializarMsjServidor(msjServidor);
 
-	sprintf(combustibleAvion, "%d", avion->combustible);
+	sprintf(combustibleActAvion, "%d", avion->combustibleActual);
+	sprintf(combustibleMaxAvion, "%d", avion->combustibleMaximo);
+
 	sprintf(estadoAvion, "%d", avion->estado);
 	sprintf(opcionAvion, "%d", *opcion);
 
-	concatenarMsjServidor(msjServidor, avion, combustibleAvion, estadoAvion, opcionAvion);
+	concatenarMsjServidor(msjServidor, avion, combustibleActAvion, combustibleMaxAvion, estadoAvion, opcionAvion);
 }
 
 void mostrarMensaje(char * msjServidor){

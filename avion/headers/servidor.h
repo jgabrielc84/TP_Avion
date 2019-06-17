@@ -29,5 +29,8 @@ void recibirMensaje(int *, int *, char *);
 
 void registrarAvion(char *, ST_AVION *, const int *, const int *);
 
+void pedirEstadoAvion(char * msjServidor, ST_AVION * avion, const int * servidorTorreControl);
+
+
 
 #endif /* HEADERS_SERVIDOR_H_ */

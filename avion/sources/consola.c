@@ -36,7 +36,7 @@ void iniciaMenuAvion(ST_AVION * avion, char * msjServidor, const int * servidorT
 			opcion = -1;
 			break;
 		case MENU_ESTADO_AVION:
-			//estadoAvion();
+			pedirEstadoAvion(msjServidor, avion, servidorTorreControl);
 			opcion = -1;
 			break;
 		case MENU_SALIR_SISTEMA:

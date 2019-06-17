@@ -50,3 +50,22 @@ void registrarAvion(char * msjServidor, ST_AVION * avion, const int * opcion, co
 
 	sleep(5);
 }
+
+//METODO NUEVO
+void pedirEstadoAvion(char * msjServidor, ST_AVION * avion, const int * servidorTorreControl){
+	printf("%s", msjServidor);
+	printf("%s", avion->modelo);
+	send(*servidorTorreControl, avion, sizeof(ST_AVION), 0);
+
+	recv(*servidorTorreControl, avion, sizeof(ST_AVION), 0);
+
+	printf("El estado del avion: %s \n", avion->identificador );
+	printf("Modelo: %s\n", avion->modelo );
+	printf("Cantidad de combustible: %d\n", avion->combustibleActual);
+	printf("Estado actual: %d\n", avion->estado);
+
+
+
+}
+
+
