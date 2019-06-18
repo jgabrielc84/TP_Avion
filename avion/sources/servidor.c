@@ -1,3 +1,4 @@
+
 /* TP_avion
  * servidor.c
  *
@@ -59,14 +60,17 @@ void registrarAvion(char * msjServidor, ST_AVION * avion, const int * opcion, co
 void pedirEstadoAvion(char * msjServidor, ST_AVION * avion, const int * opcion, const int * servidorTorreControl){
 
 	inicializarMsjServidor(msjServidor);
+	printf("Inicializado");
 	formatearMensaje(msjServidor, avion, opcion);
 	printf("%s", msjServidor);
 	printf("%s", avion->modelo);
 
 	send(*servidorTorreControl, msjServidor, sizeof(char)*(LONG_MSJ_SERV), 0);
 
+	printf("Enviado: %s", msjServidor);
 	recv(*servidorTorreControl, msjServidor, sizeof(char)*(LONG_MSJ_SERV), 0);
 
+	printf("Re %s", msjServidor);
 	concatenarMsjServidor(msjServidor, avion, avion->combustibleActual, avion->combustibleMaximo, avion->estado, opcion);
 
 	mostrarMensaje(msjServidor);
