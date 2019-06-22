@@ -15,7 +15,7 @@
 
 void comprobarParametrosInicio(int * argc);
 
-void abrirArchivoConfigServ(FILE *);
+FILE * abrirArchivo(const char * nombreArchivo, const char * modoApertura);
 
 void leerIpPuertoDeArchivo(FILE *, char *, int *);
 

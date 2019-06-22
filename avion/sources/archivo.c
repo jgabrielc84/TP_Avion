@@ -18,14 +18,19 @@ void comprobarParametrosInicio(int * argc){
 	}
 }
 
-void abrirArchivoConfigServ(FILE * ptrArchivoConfigServ){
-	printf("*abrirArchivoConfigServ*\n");
-	if((ptrArchivoConfigServ = fopen("config.txt", "r")) == NULL){
-		printf("Error al abrir archivo\n");
+FILE * abrirArchivo(const char * nombreArchivo, const char * modoApertura){
+	printf("*abrirArchivo %s*\n", nombreArchivo);
+
+	FILE * ptrArchivo = NULL;
+
+	if((ptrArchivo = fopen(nombreArchivo, modoApertura)) == NULL){
+		printf("Error al abrir archivo %s\n", nombreArchivo);
 		exit(EXIT_FAILURE);
 	}else{
-		printf("Archivo de configuracion abierto correctamente.\n");
+		printf("Archivo %s abierto correctamente.\n\n", nombreArchivo);
 	}
+
+	return ptrArchivo;
 }
 
 void leerIpPuertoDeArchivo(FILE * ptrArchivoConfigServ, char * ip, int * puerto){

@@ -29,59 +29,39 @@ void conectarConServidor(int * servidorTorreControl, struct sockaddr_in * direcc
 }
 
 void enviarMensajeAServidor(const int * servidorTorreControl, const char * msjServidor){
-	send(*servidorTorreControl, msjServidor, sizeof(char)*(LONG_MSJ_SERV), 0); //Se envia al servidor el mensaje formateado
+	printf("*enviarMensajeAServidor*\n");
+	printf("Mensaje a enviar: %s\n", msjServidor); // BORRAR
+	send(*servidorTorreControl, msjServidor, sizeof(char)*LONG_MSJ_SERV, 0); //Se envia el mensaje formateado al servidor
 }
 
-void recibirMensaje(int * bytesRecibidos, int * servidorTorreControl, char * msjServidor){
+void recibirMensaje(int * bytesRecibidos, const int * servidorTorreControl, char * msjServidor){
+	printf("*recibirMensaje*\n");
 	*bytesRecibidos = 0;
 
-		while(*bytesRecibidos == 0){
-			*bytesRecibidos = recv(*servidorTorreControl, msjServidor, sizeof(char)*LONG_MSJ_SERV, 0);
+	while(*bytesRecibidos == 0){
+		*bytesRecibidos = recv(*servidorTorreControl, msjServidor, sizeof(char)*LONG_MSJ_SERV, 0);
 
-			if(*bytesRecibidos <= 0){
-				printf("Error al recibir mensaje.\n");
-			}
+		if(*bytesRecibidos <= 0){
+			printf("Error al recibir mensaje.\n");
 		}
-
-
+	}
+	printf("Mensaje recibido: %s\n", msjServidor); // BORRAR
 }
 
 void registrarAvion(char * msjServidor, ST_AVION * avion, const int * opcion, const int * servidorTorreControl){
-	printf("Registrando avion %s en torre de control\n", avion->modelo);
+	printf("*registrarAvion*\n");
 
 	formatearMensaje(msjServidor, avion, opcion);
-	printf("Mensaje a enviar: %s\n", msjServidor); //BORRAR
-	enviarMensajeAServidor(servidorTorreControl, msjServidor);
 
-	sleep(5);
+	enviarMensajeAServidor(servidorTorreControl, msjServidor);
 }
 
-//METODO NUEVO
 void pedirEstadoAvion(char * msjServidor, ST_AVION * avion, const int * opcion, const int * servidorTorreControl){
+	printf("*pedirEstadoAvion*\n");
 
-	inicializarMsjServidor(msjServidor);
-	printf("Inicializado");
 	formatearMensaje(msjServidor, avion, opcion);
-	printf("%s", msjServidor);
-	printf("%s", avion->modelo);
 
-	send(*servidorTorreControl, msjServidor, sizeof(char)*(LONG_MSJ_SERV), 0);
-
-	printf("Enviado: %s", msjServidor);
-	recv(*servidorTorreControl, msjServidor, sizeof(char)*(LONG_MSJ_SERV), 0);
-
-	printf("Re %s", msjServidor);
-	concatenarMsjServidor(msjServidor, avion, avion->combustibleActual, avion->combustibleMaximo, avion->estado, opcion);
-
-	mostrarMensaje(msjServidor);
-
-	printf("El estado del avion: %s \n", avion->identificador );
-	printf("Modelo: %s\n", avion->modelo );
-	printf("Cantidad de combustible: %d\n", avion->combustibleActual);
-	printf("Estado actual: %d\n", avion->estado);
-
-
-
+	enviarMensajeAServidor(servidorTorreControl,msjServidor);
 }
 
 

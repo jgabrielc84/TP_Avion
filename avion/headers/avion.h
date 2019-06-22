@@ -39,6 +39,7 @@ void inicializarAvion(ST_AVION *, char**);
 
 void comprobarAvion(ST_AVION *);
 
+void mostrarEstadoAvion(ST_AVION *, char *);
 
 
 #endif /* HEADERS_AVION_H_ */

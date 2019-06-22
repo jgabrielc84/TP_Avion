@@ -22,14 +22,7 @@ void inicializarAvion(ST_AVION * avion, char** argv){
 	sscanf(argv[3], "%d", &combustibleAvion);
 	avion->combustibleActual = combustibleAvion;
 	avion->combustibleMaximo = combustibleAvion;
-	printf("%s\n", avion->identificador); //BORRAR
-	printf("%s\n", avion->modelo); //BORRAR
-	printf("%d\n", avion->combustibleActual); //BORRAR
-	printf("%d\n", avion->combustibleMaximo); //BORRAR
-
 }
-
-
 
 void comprobarAvion(ST_AVION * avion){
 	printf("*comprobarAvion*\n");
@@ -60,10 +53,38 @@ void comprobarAvion(ST_AVION * avion){
 	fclose(ptrArchivo);
 }
 
+void mostrarEstado(enum AVIONESTADO estado){
+	switch(estado){
+	case AVION_HANGAR:
+		printf("Estado: Hangar\n\n");
+		break;
+	case AVION_LISTO_HANGAR:
+		printf("Estado: Listo / Hangar\n\n");
+		break;
+	case AVION_LISTO_DESPEGAR:
+		printf("Estado: Listo / Despegar\n\n");
+		break;
+	case AVION_DESPEGANDO:
+		printf("Estado: Despegando\n\n");
+		break;
+	case AVION_EN_VUELO:
+		printf("Estado: En Vuelo\n\n");
+		break;
+	case AVION_ESPERA_ATERRIZAR:
+		printf("Estado: Espera / Aterrizar\n\n");
+		break;
+	case AVION_ATERRIZANDO:
+		printf("Estado: Aterrizando\n\n");
+		break;
+	}
+}
 
+void mostrarEstadoAvion(ST_AVION * avion, char * msjServidor){
+	printf("*mostrarEstadoAvion*");
 
-
-
-
-
-
+	mostrarMensaje(msjServidor);
+	printf("Identificador: %s\n", avion->identificador );
+	printf("Modelo: %s\n", avion->modelo );
+	printf("Cantidad de combustible: %d\n", avion->combustibleActual);
+	mostrarEstado(avion->estado);
+}

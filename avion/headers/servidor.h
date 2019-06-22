@@ -25,11 +25,11 @@ struct sockaddr_in crearServidor(const char *, const int *);
 
 void conectarConServidor(int *, struct sockaddr_in *);
 
-void recibirMensaje(int *, int *, char *);
+void recibirMensaje(int *, const int *, char *);
 
 void registrarAvion(char *, ST_AVION *, const int *, const int *);
 
-void pedirEstadoAvion(char * msjServidor, ST_AVION * avion, const int * opcion, const int * servidorTorreControl);
+void pedirEstadoAvion(char *, ST_AVION *, const int *, const int *);
 
 
 

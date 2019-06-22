@@ -23,6 +23,6 @@ enum MENUOPCION{
 	MENU_ESTADO_AVION
 };
 
-void iniciaMenuAvion(ST_AVION *, char *, const int *, const int *);
+void iniciarMenuAvion(ST_AVION *, char *, const int *, int *);
 
 #endif /* HEADERS_CONSOLA_H_ */

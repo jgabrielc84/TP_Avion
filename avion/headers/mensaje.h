@@ -26,6 +26,7 @@ void formatearMensaje(char *, const ST_AVION *, const int *);
 
 void mostrarMensaje(char *);
 
+void parsearMensaje(ST_AVION *, char *);
 
 
 #endif /* HEADERS_MENSAJE_H_ */

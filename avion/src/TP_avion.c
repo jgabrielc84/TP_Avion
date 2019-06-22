@@ -22,7 +22,6 @@
 
 int main(int argc, char * argv[]) {
 	comprobarParametrosInicio(&argc);
-
 	system("clear");
 
 	//VARIABLES
@@ -42,35 +41,23 @@ int main(int argc, char * argv[]) {
 
 	comprobarAvion(avion);
 
-	//abrirArchivoConfigServ(ptrArchivoConfigServ);
-	//-------------El archivo se habre en el main porque falla la funcion(no encuentro el error)
-	printf("*abrirArchivoConfigServ*\n");
-	if((ptrArchivoConfigServ = fopen("config.txt", "r")) == NULL){
-		printf("Error al abrir archivo\n");
-		exit(EXIT_FAILURE);
-	}else{
-		printf("Archivo de configuracion abierto correctamente.\n");
-	}
-	//-------------
+	ptrArchivoConfigServ = abrirArchivo("config.txt", "r");
 
 	leerIpPuertoDeArchivo(ptrArchivoConfigServ, ipServidor, &puertoServidor);
 
-	direccionServidor = crearServidor(ipServidor, &puertoServidor); //Se crea un servidor con los datos recuperados del archivo
-
-	free(ptrArchivoConfigServ); //Libera el puntero de archivo de configuracion
+	direccionServidor = crearServidor(ipServidor, &puertoServidor); //Se crea un servidor con los datos de config.txt
 
 	servidorTorreControl = socket(AF_INET, SOCK_STREAM, 0); //se pide un socket que devuelve un valor
 
 	conectarConServidor(&servidorTorreControl, &direccionServidor);
 
-	//recibirMensaje(&bytesRecibidos, &servidorTorreControl, msjServidor);
-	//mostrarMensaje(msjServidor);
+	//sleep(3); //se usa para ver si hay un error antes de esta linea // BORRAR
 
-	sleep(5);
+	iniciarMenuAvion(avion, msjServidor, &servidorTorreControl, &bytesRecibidos);
 
-	iniciaMenuAvion(avion, msjServidor, &servidorTorreControl, &bytesRecibidos);
-
-	free(msjServidor); //Libera punteros
+	fclose(ptrArchivoConfigServ); //cierra archivo
+	free(ptrArchivoConfigServ); //Libera punteros
+	free(msjServidor);
 	free(ipServidor);
 	free(avion);
 
