@@ -8,7 +8,7 @@
 
 #include "../headers/archivo.h"
 
-#define LONG_LINEALEIDA 30
+#define LONG_LINEALEIDA 50
 
 
 void comprobarParametrosInicio(int * argc){

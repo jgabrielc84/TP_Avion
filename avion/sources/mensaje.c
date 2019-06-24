@@ -63,7 +63,7 @@ void formatearMensaje(char * msjServidor, const ST_AVION * avion, const int * op
 }
 
 void parsearMensaje(ST_AVION * avion, char * msjServidor){
-	printf("*parsearMensaje*\n\n");
+	printf("*parsearMensaje*\n");
 
 	char * linea = malloc(sizeof(char)*LONG_MSJ_SERV);
 

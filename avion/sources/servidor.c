@@ -21,7 +21,7 @@ struct sockaddr_in crearServidor(const char * ip, const int * puerto){
 }
 
 void conectarConServidor(int * servidorTorreControl, struct sockaddr_in * direccionServidor){
-	printf("conectaConexionServ\n");
+	printf("*conectaConexionServ*\n");
 	if(connect(*servidorTorreControl, (void *) direccionServidor, sizeof(*direccionServidor)) != 0){
 		perror("No se pudo conectar al servidor\n");
 		exit(EXIT_FAILURE);
@@ -37,6 +37,7 @@ void enviarMensajeAServidor(const int * servidorTorreControl, const char * msjSe
 void recibirMensaje(int * bytesRecibidos, const int * servidorTorreControl, char * msjServidor){
 	printf("*recibirMensaje*\n");
 	*bytesRecibidos = 0;
+	inicializarMsjServidor(msjServidor);
 
 	while(*bytesRecibidos == 0){
 		*bytesRecibidos = recv(*servidorTorreControl, msjServidor, sizeof(char)*LONG_MSJ_SERV, 0);

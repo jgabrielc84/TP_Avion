@@ -6,6 +6,7 @@
  */
 
 #include "../headers/consola.h"
+#include "../headers/mensaje.h"
 
 void mostrarMenuPrincipal(){
 	printf("\t-Menu AVION-\n\n");
@@ -23,6 +24,7 @@ void iniciarMenuAvion(ST_AVION * avion, char * msjServidor, const int * servidor
 	while(*opcion != MENU_SALIR_SISTEMA && *opcion != MENU_REGISTRAR_AVION && *opcion != MENU_PEDIR_PISTA && *opcion != MENU_ESTADO_AVION){
 		mostrarMenuPrincipal();
 		scanf("%d", opcion);
+		liberarBuffer();
 
 		switch(*opcion){
 		case MENU_REGISTRAR_AVION:

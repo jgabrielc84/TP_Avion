@@ -8,6 +8,9 @@
 #include "../headers/avion.h"
 #include "../headers/mensaje.h"
 
+#define TRUE 1
+#define FALSE 0
+
 
 void inicializarAvion(ST_AVION * avion, char** argv){
 	printf("*inicializarAvion*\n");
@@ -28,28 +31,36 @@ void comprobarAvion(ST_AVION * avion){
 	printf("*comprobarAvion*\n");
 	FILE * ptrArchivo;
 	ST_AVION * avionAComprobar = malloc(sizeof(ST_AVION));
+	int encontrado = FALSE;
 
 	if ((ptrArchivo = fopen("avion.bin","rb")) == NULL){
-		printf("No se pudo abrir el archivo. Se crea archivo avion.bin\n");
+		printf("No se pudo abrir el archivo. Se procede a crea archivo avion.bin\n");
 
 		if((ptrArchivo = fopen("avion.bin","wb")) == NULL){
 			printf("No se pudo crear el archivo.\n");
 			exit(EXIT_FAILURE);
 		}else{
-			printf("%s", avion->modelo);  //BORRAR
-			fwrite(avion, sizeof(ST_AVION), 1, ptrArchivo);
-		}
-	}else{
-		fread(avionAComprobar, sizeof(ST_AVION), 1, ptrArchivo);
-		if(strcmp(avion->identificador, avionAComprobar->identificador) ==0 && strcmp(avion->modelo, avionAComprobar->modelo) ==0){
-		   printf("Los datos del avion son correctos.\n");
-		   return;
-		}
-		else{
-		   printf("Los datos del avion son incorrectos.\n");
-		   exit(EXIT_FAILURE);
+			printf("Archivo avion.bin creado correctamente.\n");
 		}
 	}
+	fseek(ptrArchivo, 0, SEEK_SET);
+	fread(avionAComprobar, sizeof(ST_AVION), 1, ptrArchivo);
+	while(!feof(ptrArchivo) && encontrado == FALSE){
+		if(strcmp(avion->identificador, avionAComprobar->identificador) == 0){
+		   encontrado = TRUE;
+		}
+		fread(avionAComprobar, sizeof(ST_AVION), 1, ptrArchivo);
+	}
+	if(!feof(ptrArchivo) && encontrado == TRUE){
+		printf("Los datos del avion son correctos.\n");
+		printf("%s", avion->identificador);  //BORRAR
+	}else{
+		fseek(ptrArchivo, 0, SEEK_SET);
+		fwrite(avion, sizeof(ST_AVION), 1, ptrArchivo);
+		printf("Los datos del avion se ingresaron al archivo.\n");
+		printf("%s", avion->identificador);  //BORRAR
+	}
+
 	fclose(ptrArchivo);
 }
 
@@ -80,11 +91,11 @@ void mostrarEstado(enum AVIONESTADO estado){
 }
 
 void mostrarEstadoAvion(ST_AVION * avion, char * msjServidor){
-	printf("*mostrarEstadoAvion*");
+	printf("*mostrarEstadoAvion*\n");
 
 	mostrarMensaje(msjServidor);
 	printf("Identificador: %s\n", avion->identificador );
 	printf("Modelo: %s\n", avion->modelo );
-	printf("Cantidad de combustible: %d\n", avion->combustibleActual);
+	printf("Combustible actual: %d\n", avion->combustibleActual);
 	mostrarEstado(avion->estado);
 }
