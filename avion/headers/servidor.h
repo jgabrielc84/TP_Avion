@@ -27,10 +27,7 @@ void conectarConServidor(int *, struct sockaddr_in *);
 
 void recibirMensaje(int *, const int *, char *);
 
-void registrarAvion(char *, ST_AVION *, const int *, const int *);
-
-void pedirEstadoAvion(char *, ST_AVION *, const int *, const int *);
-
+void enviarSolicitudAServidor(char *, ST_AVION *, const int *, const int *);
 
 
 #endif /* HEADERS_SERVIDOR_H_ */

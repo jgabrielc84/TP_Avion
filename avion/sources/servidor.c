@@ -49,20 +49,10 @@ void recibirMensaje(int * bytesRecibidos, const int * servidorTorreControl, char
 	printf("Mensaje recibido: %s\n", msjServidor); // BORRAR
 }
 
-void registrarAvion(char * msjServidor, ST_AVION * avion, const int * opcion, const int * servidorTorreControl){
+void enviarSolicitudAServidor(char * msjServidor, ST_AVION * avion, const int * opcion, const int * servidorTorreControl){
 	printf("*registrarAvion*\n");
 
 	formatearMensaje(msjServidor, avion, opcion);
 
 	enviarMensajeAServidor(servidorTorreControl, msjServidor);
 }
-
-void pedirEstadoAvion(char * msjServidor, ST_AVION * avion, const int * opcion, const int * servidorTorreControl){
-	printf("*pedirEstadoAvion*\n");
-
-	formatearMensaje(msjServidor, avion, opcion);
-
-	enviarMensajeAServidor(servidorTorreControl,msjServidor);
-}
-
-

@@ -7,6 +7,7 @@
 
 #include "../headers/consola.h"
 #include "../headers/mensaje.h"
+#include "../headers/servidor.h"
 
 void mostrarMenuPrincipal(){
 	printf("\t-Menu AVION-\n\n");
@@ -28,15 +29,8 @@ void iniciarMenuAvion(ST_AVION * avion, char * msjServidor, const int * servidor
 
 		switch(*opcion){
 		case MENU_REGISTRAR_AVION:
-			registrarAvion(msjServidor, avion, opcion, servidorTorreControl);
-			recibirMensaje(bytesRecibidos, servidorTorreControl, msjServidor);
-			parsearMensaje(avion, msjServidor);
-			system("clear");
-			mostrarMensaje(msjServidor);
-			*opcion = -1;
-			break;
 		case MENU_PEDIR_PISTA:
-			//pedirPista();
+			enviarSolicitudAServidor(msjServidor, avion, opcion, servidorTorreControl);
 			recibirMensaje(bytesRecibidos, servidorTorreControl, msjServidor);
 			parsearMensaje(avion, msjServidor);
 			system("clear");
@@ -44,7 +38,7 @@ void iniciarMenuAvion(ST_AVION * avion, char * msjServidor, const int * servidor
 			*opcion = -1;
 			break;
 		case MENU_ESTADO_AVION:
-			pedirEstadoAvion(msjServidor, avion, opcion, servidorTorreControl);
+			enviarSolicitudAServidor(msjServidor, avion, opcion, servidorTorreControl);
 			recibirMensaje(bytesRecibidos, servidorTorreControl, msjServidor);
 			parsearMensaje(avion, msjServidor);
 			system("clear");
