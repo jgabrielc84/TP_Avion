@@ -19,37 +19,38 @@ void mostrarMenuPrincipal(){
 }
 
 void iniciarMenuAvion(ST_AVION * avion, char * msjServidor, const int * servidorTorreControl, int * bytesRecibidos){
-	int * opcion = malloc(sizeof(int));
-	*opcion = -1;
+	int opcion = -1;
+
 	system("clear");
-	while(*opcion != MENU_SALIR_SISTEMA && *opcion != MENU_REGISTRAR_AVION && *opcion != MENU_PEDIR_PISTA && *opcion != MENU_ESTADO_AVION){
+	while(opcion != MENU_SALIR_SISTEMA && opcion != MENU_REGISTRAR_AVION && opcion != MENU_PEDIR_PISTA && opcion != MENU_ESTADO_AVION){
 		mostrarMenuPrincipal();
-		scanf("%d", opcion);
+		scanf("%d", &opcion);
 		liberarBuffer();
 
-		switch(*opcion){
+		switch(opcion){
 		case MENU_REGISTRAR_AVION:
 		case MENU_PEDIR_PISTA:
-			enviarSolicitudAServidor(msjServidor, avion, opcion, servidorTorreControl);
+			enviarSolicitudAServidor(msjServidor, avion, &opcion, servidorTorreControl);
 			recibirMensaje(bytesRecibidos, servidorTorreControl, msjServidor);
 			parsearMensaje(avion, msjServidor);
 			system("clear");
 			mostrarMensaje(msjServidor);
-			*opcion = -1;
+			opcion = -1;
 			break;
 		case MENU_ESTADO_AVION:
-			enviarSolicitudAServidor(msjServidor, avion, opcion, servidorTorreControl);
+			enviarSolicitudAServidor(msjServidor, avion, &opcion, servidorTorreControl);
 			recibirMensaje(bytesRecibidos, servidorTorreControl, msjServidor);
 			parsearMensaje(avion, msjServidor);
 			system("clear");
 			mostrarEstadoAvion(avion, msjServidor);
-			*opcion = -1;
+			opcion = -1;
 			break;
 		case MENU_SALIR_SISTEMA:
 			system("clear");
 			printf("Que tenga un buen dia!\n\n");
 			break;
 		default:
+			system("clear");
 			printf("\nLa opcion elegida es incorrecta!\n\n");
 			sleep(1);
 			break;

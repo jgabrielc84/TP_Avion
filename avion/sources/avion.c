@@ -17,9 +17,9 @@ void inicializarAvion(ST_AVION * avion, char** argv){
 	int combustibleAvion = 0;
 	memset(avion->modelo, '\0', LONG_MODELO);
 	memset(avion->identificador, '\0', LONG_IDENTIFICADOR);
-	avion->estado = AVION_HANGAR;
 	avion->combustibleActual = 0;
 	avion->combustibleMaximo=0;
+	avion->estado = AVION_HANGAR;
 	strcpy(avion->identificador, argv[1]);
 	strcpy(avion->modelo, argv[2]);
 	sscanf(argv[3], "%d", &combustibleAvion);
@@ -40,7 +40,8 @@ void comprobarAvion(ST_AVION * avion){
 			printf("No se pudo crear el archivo.\n");
 			exit(EXIT_FAILURE);
 		}else{
-			printf("Archivo avion.bin creado correctamente.\n");
+			printf("Archivo avion.bin creado correctamente.\nVelva a iniciar.");
+			exit(EXIT_FAILURE);
 		}
 	}
 	fseek(ptrArchivo, 0, SEEK_SET);
@@ -67,25 +68,25 @@ void comprobarAvion(ST_AVION * avion){
 void mostrarEstado(enum AVIONESTADO estado){
 	switch(estado){
 	case AVION_HANGAR:
-		printf("Estado: Hangar\n\n");
+		printf("Estado: HANGAR\n\n");
 		break;
 	case AVION_LISTO_HANGAR:
-		printf("Estado: Listo / Hangar\n\n");
+		printf("Estado: LISTO / HANGAR\n\n");
 		break;
 	case AVION_LISTO_DESPEGAR:
-		printf("Estado: Listo / Despegar\n\n");
+		printf("Estado: LISTO / DESPEGAR\n\n");
 		break;
 	case AVION_DESPEGANDO:
-		printf("Estado: Despegando\n\n");
+		printf("Estado: DESPEGANDO\n\n");
 		break;
 	case AVION_EN_VUELO:
-		printf("Estado: En Vuelo\n\n");
+		printf("Estado: EN VUELO\n\n");
 		break;
 	case AVION_ESPERA_ATERRIZAR:
-		printf("Estado: Espera / Aterrizar\n\n");
+		printf("Estado: ESPERA / ATERRIZAR\n\n");
 		break;
 	case AVION_ATERRIZANDO:
-		printf("Estado: Aterrizando\n\n");
+		printf("Estado: ATERRIZANDO\n\n");
 		break;
 	}
 }

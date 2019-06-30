@@ -51,8 +51,6 @@ int main(int argc, char * argv[]) {
 
 	conectarConServidor(&servidorTorreControl, &direccionServidor);
 
-	//sleep(3); //se usa para ver si hay un error antes de esta linea // BORRAR
-
 	iniciarMenuAvion(avion, msjServidor, &servidorTorreControl, &bytesRecibidos);
 
 	fclose(ptrArchivoConfigServ); //cierra archivo
