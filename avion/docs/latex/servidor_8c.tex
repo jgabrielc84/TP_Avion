@@ -1,0 +1,169 @@
+\hypertarget{servidor_8c}{}\doxysection{sources/servidor.c File Reference}
+\label{servidor_8c}\index{sources/servidor.c@{sources/servidor.c}}
+{\ttfamily \#include \char`\"{}../headers/servidor.\+h\char`\"{}}\newline
+Include dependency graph for servidor.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{servidor_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct sockaddr\+\_\+in \mbox{\hyperlink{servidor_8c_a2a30c24ed06b10315329a908d1861102}{crear\+Servidor}} (const char $\ast$ip, const int $\ast$puerto)
+\item 
+void \mbox{\hyperlink{servidor_8c_a32a909233d2317e81fbae5d5d7fa3f3b}{conectar\+Con\+Servidor}} (int $\ast$servidor\+Torre\+Control, struct sockaddr\+\_\+in $\ast$direccion\+Servidor)
+\item 
+void \mbox{\hyperlink{servidor_8c_a88a11b9900f420c8985738ee547cad75}{enviar\+Mensaje\+A\+Servidor}} (const int $\ast$servidor\+Torre\+Control, const char $\ast$msj\+Servidor)
+\item 
+void \mbox{\hyperlink{servidor_8c_adbfb27e50994e42927d2c30819127dd3}{recibir\+Mensaje}} (int $\ast$bytes\+Recibidos, const int $\ast$servidor\+Torre\+Control, char $\ast$msj\+Servidor)
+\item 
+void \mbox{\hyperlink{servidor_8c_a3047c3860e715d7e2d84e0d10ad297ba}{enviar\+Solicitud\+A\+Servidor}} (char $\ast$msj\+Servidor, \mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$avion, const int $\ast$opcion, const int $\ast$servidor\+Torre\+Control)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{servidor_8c_a32a909233d2317e81fbae5d5d7fa3f3b}\label{servidor_8c_a32a909233d2317e81fbae5d5d7fa3f3b}} 
+\index{servidor.c@{servidor.c}!conectarConServidor@{conectarConServidor}}
+\index{conectarConServidor@{conectarConServidor}!servidor.c@{servidor.c}}
+\doxysubsubsection{\texorpdfstring{conectarConServidor()}{conectarConServidor()}}
+{\footnotesize\ttfamily void conectar\+Con\+Servidor (\begin{DoxyParamCaption}\item[{int $\ast$}]{servidor\+Torre\+Control,  }\item[{struct sockaddr\+\_\+in $\ast$}]{direccion\+Servidor }\end{DoxyParamCaption})}
+
+Recibe por referencia el socket del servidor y la la direccion, para asi poder conectarse a el. 
+\begin{DoxyParams}{Parameters}
+{\em servidor\+Torre\+F\+Control,direccion\+Servidor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 31 of file servidor.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{31                                                                                             \{}
+\DoxyCodeLine{32     printf(\textcolor{stringliteral}{"*conectaConexionServ*\(\backslash\)n"});}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordflow}{if}(connect(*servidorTorreControl, (\textcolor{keywordtype}{void} *) direccionServidor, \textcolor{keyword}{sizeof}(*direccionServidor)) != 0)\{}
+\DoxyCodeLine{35         perror(\textcolor{stringliteral}{"No se pudo conectar al servidor\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{36         exit(EXIT\_FAILURE);}
+\DoxyCodeLine{37     \}}
+\DoxyCodeLine{38 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{servidor_8c_a2a30c24ed06b10315329a908d1861102}\label{servidor_8c_a2a30c24ed06b10315329a908d1861102}} 
+\index{servidor.c@{servidor.c}!crearServidor@{crearServidor}}
+\index{crearServidor@{crearServidor}!servidor.c@{servidor.c}}
+\doxysubsubsection{\texorpdfstring{crearServidor()}{crearServidor()}}
+{\footnotesize\ttfamily struct sockaddr\+\_\+in crear\+Servidor (\begin{DoxyParamCaption}\item[{const char $\ast$}]{ip,  }\item[{const int $\ast$}]{puerto }\end{DoxyParamCaption})}
+
+Setea la direccion y puerto del servidor y lo devuelve. 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$} & ip, $\ast$ puerto \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct sockaddr\+\_\+in 
+\end{DoxyReturn}
+
+
+Definition at line 16 of file servidor.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16                                                                      \{}
+\DoxyCodeLine{17     printf(\textcolor{stringliteral}{"*crearServidor*\(\backslash\)n"});}
+\DoxyCodeLine{18     \textcolor{keyword}{struct }sockaddr\_in servidor;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     servidor.sin\_family = AF\_INET;}
+\DoxyCodeLine{21     servidor.sin\_addr.s\_addr = inet\_addr(ip);}
+\DoxyCodeLine{22     servidor.sin\_port = htons(*puerto);}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keywordflow}{return} servidor;}
+\DoxyCodeLine{25 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{servidor_8c_a88a11b9900f420c8985738ee547cad75}\label{servidor_8c_a88a11b9900f420c8985738ee547cad75}} 
+\index{servidor.c@{servidor.c}!enviarMensajeAServidor@{enviarMensajeAServidor}}
+\index{enviarMensajeAServidor@{enviarMensajeAServidor}!servidor.c@{servidor.c}}
+\doxysubsubsection{\texorpdfstring{enviarMensajeAServidor()}{enviarMensajeAServidor()}}
+{\footnotesize\ttfamily void enviar\+Mensaje\+A\+Servidor (\begin{DoxyParamCaption}\item[{const int $\ast$}]{servidor\+Torre\+Control,  }\item[{const char $\ast$}]{msj\+Servidor }\end{DoxyParamCaption})}
+
+Se envia el mensaje formateado al servidor 
+\begin{DoxyParams}{Parameters}
+{\em servidor\+Torre\+Control,msj\+Servidor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 44 of file servidor.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{44                                                                                        \{}
+\DoxyCodeLine{45     printf(\textcolor{stringliteral}{"*enviarMensajeAServidor*\(\backslash\)n"});}
+\DoxyCodeLine{46     printf(\textcolor{stringliteral}{"Mensaje a enviar: \%s\(\backslash\)n"}, msjServidor); \textcolor{comment}{// BORRAR}}
+\DoxyCodeLine{47     send(*servidorTorreControl, msjServidor, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*\mbox{\hyperlink{mensaje_8h_a9469b1322167bd46d4b657d7ff0f49b8}{LONG\_MSJ\_SERV}}, 0);}
+\DoxyCodeLine{48 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{servidor_8c_a3047c3860e715d7e2d84e0d10ad297ba}\label{servidor_8c_a3047c3860e715d7e2d84e0d10ad297ba}} 
+\index{servidor.c@{servidor.c}!enviarSolicitudAServidor@{enviarSolicitudAServidor}}
+\index{enviarSolicitudAServidor@{enviarSolicitudAServidor}!servidor.c@{servidor.c}}
+\doxysubsubsection{\texorpdfstring{enviarSolicitudAServidor()}{enviarSolicitudAServidor()}}
+{\footnotesize\ttfamily void enviar\+Solicitud\+A\+Servidor (\begin{DoxyParamCaption}\item[{char $\ast$}]{msj\+Servidor,  }\item[{\mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$}]{avion,  }\item[{const int $\ast$}]{opcion,  }\item[{const int $\ast$}]{servidor\+Torre\+Control }\end{DoxyParamCaption})}
+
+Recibe estructura del avion, llama a función que formatea a String dependiendo la opcion, luego llama a funcion para enviar el mensaje al socket del servidor de Torre de Control 
+\begin{DoxyParams}{Parameters}
+{\em msj\+Servidor,avion,opcion,servidor\+Torre\+Control} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 75 of file servidor.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{75                                                                                                                          \{}
+\DoxyCodeLine{76     printf(\textcolor{stringliteral}{"*registrarAvion*\(\backslash\)n"});}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     \mbox{\hyperlink{mensaje_8c_ad0e56adf413de25e28f194fc50cea96c}{formatearMensaje}}(msjServidor, avion, opcion);}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80     \mbox{\hyperlink{servidor_8c_a88a11b9900f420c8985738ee547cad75}{enviarMensajeAServidor}}(servidorTorreControl, msjServidor);}
+\DoxyCodeLine{81 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{servidor_8c_adbfb27e50994e42927d2c30819127dd3}\label{servidor_8c_adbfb27e50994e42927d2c30819127dd3}} 
+\index{servidor.c@{servidor.c}!recibirMensaje@{recibirMensaje}}
+\index{recibirMensaje@{recibirMensaje}!servidor.c@{servidor.c}}
+\doxysubsubsection{\texorpdfstring{recibirMensaje()}{recibirMensaje()}}
+{\footnotesize\ttfamily void recibir\+Mensaje (\begin{DoxyParamCaption}\item[{int $\ast$}]{bytes\+Recibidos,  }\item[{const int $\ast$}]{servidor\+Torre\+Control,  }\item[{char $\ast$}]{msj\+Servidor }\end{DoxyParamCaption})}
+
+Llama a funcion inicializar\+Msj\+Servidor, recibe mensaje e imprime en pantalla . 
+\begin{DoxyParams}{Parameters}
+{\em bytes\+Recibidos,servidor\+Torre\+Control,msj\+Servidor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 54 of file servidor.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{54                                                                                                \{}
+\DoxyCodeLine{55     printf(\textcolor{stringliteral}{"*recibirMensaje*\(\backslash\)n"});}
+\DoxyCodeLine{56     *bytesRecibidos = 0;}
+\DoxyCodeLine{57     \mbox{\hyperlink{mensaje_8c_aea7564d810d8d780d58757aec853c5fa}{inicializarMsjServidor}}(msjServidor);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     \textcolor{keywordflow}{while}(*bytesRecibidos == 0)\{}
+\DoxyCodeLine{60         *bytesRecibidos = recv(*servidorTorreControl, msjServidor, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*\mbox{\hyperlink{mensaje_8h_a9469b1322167bd46d4b657d7ff0f49b8}{LONG\_MSJ\_SERV}}, 0);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62         \textcolor{keywordflow}{if}(*bytesRecibidos <= 0)\{}
+\DoxyCodeLine{63             printf(\textcolor{stringliteral}{"Error al recibir mensaje.\(\backslash\)n"});}
+\DoxyCodeLine{64             sleep(3);}
+\DoxyCodeLine{65         \}}
+\DoxyCodeLine{66     \}}
+\DoxyCodeLine{67     printf(\textcolor{stringliteral}{"Mensaje recibido: \%s\(\backslash\)n"}, msjServidor); \textcolor{comment}{// BORRAR}}
+\DoxyCodeLine{68 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,208 @@
+\hypertarget{mensaje_8c}{}\doxysection{sources/mensaje.c File Reference}
+\label{mensaje_8c}\index{sources/mensaje.c@{sources/mensaje.c}}
+{\ttfamily \#include \char`\"{}../headers/mensaje.\+h\char`\"{}}\newline
+Include dependency graph for mensaje.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{mensaje_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{mensaje_8c_acf25b5874aa3455a221c1a6dddec020e}{liberar\+Buffer}} ()
+\item 
+void \mbox{\hyperlink{mensaje_8c_aea7564d810d8d780d58757aec853c5fa}{inicializar\+Msj\+Servidor}} (char $\ast$msj\+Servidor)
+\item 
+void \mbox{\hyperlink{mensaje_8c_aee817f3ad7deb8521f5625866114f04d}{concatenar\+Msj\+Servidor}} (char $\ast$msj\+Servidor, const \mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$avion, const char $\ast$combustible\+Act\+Avion, const char $\ast$combustible\+Max\+Avion, const char $\ast$estado\+Avion, const char $\ast$opcion\+Avion)
+\item 
+void \mbox{\hyperlink{mensaje_8c_ad0e56adf413de25e28f194fc50cea96c}{formatear\+Mensaje}} (char $\ast$msj\+Servidor, const \mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$avion, const int $\ast$opcion)
+\item 
+void \mbox{\hyperlink{mensaje_8c_ad64634959d377f47107571f102673d86}{parsear\+Mensaje}} (\mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$avion, char $\ast$msj\+Servidor)
+\item 
+void \mbox{\hyperlink{mensaje_8c_a070a05c9ddb6e60bf04676f4c65b1a7a}{mostrar\+Mensaje}} (char $\ast$msj\+Servidor)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mensaje_8c_aee817f3ad7deb8521f5625866114f04d}\label{mensaje_8c_aee817f3ad7deb8521f5625866114f04d}} 
+\index{mensaje.c@{mensaje.c}!concatenarMsjServidor@{concatenarMsjServidor}}
+\index{concatenarMsjServidor@{concatenarMsjServidor}!mensaje.c@{mensaje.c}}
+\doxysubsubsection{\texorpdfstring{concatenarMsjServidor()}{concatenarMsjServidor()}}
+{\footnotesize\ttfamily void concatenar\+Msj\+Servidor (\begin{DoxyParamCaption}\item[{char $\ast$}]{msj\+Servidor,  }\item[{const \mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$}]{avion,  }\item[{const char $\ast$}]{combustible\+Act\+Avion,  }\item[{const char $\ast$}]{combustible\+Max\+Avion,  }\item[{const char $\ast$}]{estado\+Avion,  }\item[{const char $\ast$}]{opcion\+Avion }\end{DoxyParamCaption})}
+
+Recibe la estructura del avion y datos del mismo Recibe un char$\ast$ por referencia en el cual se concatenan estos datos para ser enviados al Servidor 
+\begin{DoxyParams}{Parameters}
+{\em msj\+Servidor,avion,combustible\+Act\+Avion,combustible\+Max\+Avcion,estado\+Avion,opcion\+Avion} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 33 of file mensaje.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{33                                                                                                                                                                                              \{}
+\DoxyCodeLine{34     printf(\textcolor{stringliteral}{"*concatenarMsjServidor*\(\backslash\)n"});}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     strcpy(msjServidor, avion-\/>\mbox{\hyperlink{structST__AVION_a006befd8e19b9bbb16bc6233157c79ea}{identificador}});}
+\DoxyCodeLine{37     strcat(msjServidor, \textcolor{stringliteral}{"|"});}
+\DoxyCodeLine{38     strcat(msjServidor, avion-\/>\mbox{\hyperlink{structST__AVION_aaf3d37edba5f035e78ee1f2485ba9ba6}{modelo}});}
+\DoxyCodeLine{39     strcat(msjServidor, \textcolor{stringliteral}{"|"});}
+\DoxyCodeLine{40     strcat(msjServidor, combustibleActAvion);}
+\DoxyCodeLine{41     strcat(msjServidor, \textcolor{stringliteral}{"|"});}
+\DoxyCodeLine{42     strcat(msjServidor, combustibleMaxAvion);}
+\DoxyCodeLine{43     strcat(msjServidor, \textcolor{stringliteral}{"|"});}
+\DoxyCodeLine{44     strcat(msjServidor, estadoAvion);}
+\DoxyCodeLine{45     strcat(msjServidor, \textcolor{stringliteral}{"|"});}
+\DoxyCodeLine{46     strcat(msjServidor, opcionAvion);}
+\DoxyCodeLine{47 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mensaje_8c_ad0e56adf413de25e28f194fc50cea96c}\label{mensaje_8c_ad0e56adf413de25e28f194fc50cea96c}} 
+\index{mensaje.c@{mensaje.c}!formatearMensaje@{formatearMensaje}}
+\index{formatearMensaje@{formatearMensaje}!mensaje.c@{mensaje.c}}
+\doxysubsubsection{\texorpdfstring{formatearMensaje()}{formatearMensaje()}}
+{\footnotesize\ttfamily void formatear\+Mensaje (\begin{DoxyParamCaption}\item[{char $\ast$}]{msj\+Servidor,  }\item[{const \mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$}]{avion,  }\item[{const int $\ast$}]{opcion }\end{DoxyParamCaption})}
+
+Crea punteros de variables de \mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} con sus correspondientes reservas de memoria, Rellena esas variables con los datos de la \mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} recibida. Llama a concatenar\+Msj\+Servidor y libera punteros. 
+\begin{DoxyParams}{Parameters}
+{\em msj\+Servidor,avion,opcion} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 54 of file mensaje.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{54                                                                                      \{}
+\DoxyCodeLine{55     printf(\textcolor{stringliteral}{"*formatearMensaje*\(\backslash\)n"});}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{keywordtype}{char} * combustibleActAvion = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*\mbox{\hyperlink{mensaje_8h_aa8d36f8dad9016ef721f5bfcaacb5b46}{LONG\_COMBUSTIBLEAVION}}); \textcolor{comment}{// Crear variables}}
+\DoxyCodeLine{58     \textcolor{keywordtype}{char} * combustibleMaxAvion = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*(\mbox{\hyperlink{mensaje_8h_aa8d36f8dad9016ef721f5bfcaacb5b46}{LONG\_COMBUSTIBLEAVION}}));}
+\DoxyCodeLine{59     \textcolor{keywordtype}{char} * estadoAvion = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*\mbox{\hyperlink{mensaje_8h_a720ddf275c31e71083d08b000a626936}{LONG\_ESTADOAVION}});}
+\DoxyCodeLine{60     \textcolor{keywordtype}{char} * opcionAvion = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*\mbox{\hyperlink{mensaje_8h_abb48753d526952a4078d39566d090b23}{LONG\_OPCIONAVION}});}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     memset(combustibleActAvion, \textcolor{charliteral}{'\(\backslash\)0'}, \mbox{\hyperlink{mensaje_8h_aa8d36f8dad9016ef721f5bfcaacb5b46}{LONG\_COMBUSTIBLEAVION}}); \textcolor{comment}{// Inicializar Variables}}
+\DoxyCodeLine{63     memset(combustibleMaxAvion, \textcolor{charliteral}{'\(\backslash\)0'}, \mbox{\hyperlink{mensaje_8h_aa8d36f8dad9016ef721f5bfcaacb5b46}{LONG\_COMBUSTIBLEAVION}});}
+\DoxyCodeLine{64     memset(estadoAvion, \textcolor{charliteral}{'\(\backslash\)0'}, \mbox{\hyperlink{mensaje_8h_a720ddf275c31e71083d08b000a626936}{LONG\_ESTADOAVION}});}
+\DoxyCodeLine{65     memset(opcionAvion, \textcolor{charliteral}{'\(\backslash\)0'}, \mbox{\hyperlink{mensaje_8h_abb48753d526952a4078d39566d090b23}{LONG\_OPCIONAVION}});}
+\DoxyCodeLine{66     \mbox{\hyperlink{mensaje_8c_aea7564d810d8d780d58757aec853c5fa}{inicializarMsjServidor}}(msjServidor);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     sprintf(combustibleActAvion, \textcolor{stringliteral}{"\%d"}, avion-\/>\mbox{\hyperlink{structST__AVION_adb5bb0a96407813d7d6bca1d593797ff}{combustibleActual}}); \textcolor{comment}{// Copiar valores a char}}
+\DoxyCodeLine{69     sprintf(combustibleMaxAvion, \textcolor{stringliteral}{"\%d"}, avion-\/>\mbox{\hyperlink{structST__AVION_ae54bdd51b1a7cfd9bb224518c5a54650}{combustibleMaximo}});}
+\DoxyCodeLine{70     sprintf(estadoAvion, \textcolor{stringliteral}{"\%d"}, avion-\/>\mbox{\hyperlink{structST__AVION_a3667c4d330daca662e3799f2a8ac94f9}{estado}});}
+\DoxyCodeLine{71     sprintf(opcionAvion, \textcolor{stringliteral}{"\%d"}, *opcion);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \mbox{\hyperlink{mensaje_8c_aee817f3ad7deb8521f5625866114f04d}{concatenarMsjServidor}}(msjServidor, avion, combustibleActAvion, combustibleMaxAvion, estadoAvion, opcionAvion);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     free(combustibleActAvion); \textcolor{comment}{// Liberar punteros}}
+\DoxyCodeLine{76     free(combustibleMaxAvion);}
+\DoxyCodeLine{77     free(estadoAvion);}
+\DoxyCodeLine{78     free(opcionAvion);}
+\DoxyCodeLine{79 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mensaje_8c_aea7564d810d8d780d58757aec853c5fa}\label{mensaje_8c_aea7564d810d8d780d58757aec853c5fa}} 
+\index{mensaje.c@{mensaje.c}!inicializarMsjServidor@{inicializarMsjServidor}}
+\index{inicializarMsjServidor@{inicializarMsjServidor}!mensaje.c@{mensaje.c}}
+\doxysubsubsection{\texorpdfstring{inicializarMsjServidor()}{inicializarMsjServidor()}}
+{\footnotesize\ttfamily void inicializar\+Msj\+Servidor (\begin{DoxyParamCaption}\item[{char $\ast$}]{msj\+Servidor }\end{DoxyParamCaption})}
+
+Limpia el parametro recibido por referencia 
+\begin{DoxyParams}{Parameters}
+{\em msj\+Servidor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 22 of file mensaje.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{22                                                \{}
+\DoxyCodeLine{23     printf(\textcolor{stringliteral}{"*inicializarMsjServidor*\(\backslash\)n"});}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     memset(msjServidor, \textcolor{charliteral}{'\(\backslash\)0'}, \mbox{\hyperlink{mensaje_8h_a9469b1322167bd46d4b657d7ff0f49b8}{LONG\_MSJ\_SERV}});}
+\DoxyCodeLine{26 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mensaje_8c_acf25b5874aa3455a221c1a6dddec020e}\label{mensaje_8c_acf25b5874aa3455a221c1a6dddec020e}} 
+\index{mensaje.c@{mensaje.c}!liberarBuffer@{liberarBuffer}}
+\index{liberarBuffer@{liberarBuffer}!mensaje.c@{mensaje.c}}
+\doxysubsubsection{\texorpdfstring{liberarBuffer()}{liberarBuffer()}}
+{\footnotesize\ttfamily void liberar\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file mensaje.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{13                     \{}
+\DoxyCodeLine{14     \textcolor{keywordtype}{char} c;}
+\DoxyCodeLine{15     \textcolor{keywordflow}{while}((c = getchar()) != \textcolor{charliteral}{'\(\backslash\)n'} \&\& c != EOF);}
+\DoxyCodeLine{16 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mensaje_8c_a070a05c9ddb6e60bf04676f4c65b1a7a}\label{mensaje_8c_a070a05c9ddb6e60bf04676f4c65b1a7a}} 
+\index{mensaje.c@{mensaje.c}!mostrarMensaje@{mostrarMensaje}}
+\index{mostrarMensaje@{mostrarMensaje}!mensaje.c@{mensaje.c}}
+\doxysubsubsection{\texorpdfstring{mostrarMensaje()}{mostrarMensaje()}}
+{\footnotesize\ttfamily void mostrar\+Mensaje (\begin{DoxyParamCaption}\item[{char $\ast$}]{msj\+Servidor }\end{DoxyParamCaption})}
+
+Imprime en pantalla el mensaje recibido del Servidor sin parsear. 
+\begin{DoxyParams}{Parameters}
+{\em msj\+Servidor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 107 of file mensaje.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{107                                        \{}
+\DoxyCodeLine{108     printf(\textcolor{stringliteral}{"*mostrarMensaje*\(\backslash\)n"});}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     printf(\textcolor{stringliteral}{"Mensaje recibido: \%s\(\backslash\)n"}, msjServidor);}
+\DoxyCodeLine{111 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{mensaje_8c_ad64634959d377f47107571f102673d86}\label{mensaje_8c_ad64634959d377f47107571f102673d86}} 
+\index{mensaje.c@{mensaje.c}!parsearMensaje@{parsearMensaje}}
+\index{parsearMensaje@{parsearMensaje}!mensaje.c@{mensaje.c}}
+\doxysubsubsection{\texorpdfstring{parsearMensaje()}{parsearMensaje()}}
+{\footnotesize\ttfamily void parsear\+Mensaje (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$}]{avion,  }\item[{char $\ast$}]{msj\+Servidor }\end{DoxyParamCaption})}
+
+Recibe el mensaje del Servidor, el cual separa y toma cada dato para ser guardado en la variable correspondiente dentro de la estructura del avion recibida por referencia 
+\begin{DoxyParams}{Parameters}
+{\em avion,msj\+Servidor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 86 of file mensaje.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{86                                                          \{}
+\DoxyCodeLine{87     printf(\textcolor{stringliteral}{"*parsearMensaje*\(\backslash\)n"});}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     \textcolor{keywordtype}{char} * linea = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*\mbox{\hyperlink{mensaje_8h_a9469b1322167bd46d4b657d7ff0f49b8}{LONG\_MSJ\_SERV}});}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     memset(linea, \textcolor{charliteral}{'\(\backslash\)0'}, \mbox{\hyperlink{mensaje_8h_a9469b1322167bd46d4b657d7ff0f49b8}{LONG\_MSJ\_SERV}});}
+\DoxyCodeLine{92     strcpy(linea, msjServidor);}
+\DoxyCodeLine{93     \mbox{\hyperlink{mensaje_8c_aea7564d810d8d780d58757aec853c5fa}{inicializarMsjServidor}}(msjServidor);}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95     strcpy(avion-\/>\mbox{\hyperlink{structST__AVION_a006befd8e19b9bbb16bc6233157c79ea}{identificador}}, strtok(linea, \textcolor{stringliteral}{"|"}));}
+\DoxyCodeLine{96     strcpy(avion-\/>\mbox{\hyperlink{structST__AVION_aaf3d37edba5f035e78ee1f2485ba9ba6}{modelo}}, strtok(NULL, \textcolor{stringliteral}{"|"}));}
+\DoxyCodeLine{97     avion-\/>\mbox{\hyperlink{structST__AVION_adb5bb0a96407813d7d6bca1d593797ff}{combustibleActual}} = atoi(strtok(NULL, \textcolor{stringliteral}{"|"}));}
+\DoxyCodeLine{98     avion-\/>\mbox{\hyperlink{structST__AVION_ae54bdd51b1a7cfd9bb224518c5a54650}{combustibleMaximo}} = atoi(strtok(NULL, \textcolor{stringliteral}{"|"}));}
+\DoxyCodeLine{99     avion-\/>\mbox{\hyperlink{structST__AVION_a3667c4d330daca662e3799f2a8ac94f9}{estado}} = atoi(strtok(NULL, \textcolor{stringliteral}{"|"}));}
+\DoxyCodeLine{100     strcpy(msjServidor, strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)0"}));}
+\DoxyCodeLine{101 \}}
+
+\end{DoxyCode}

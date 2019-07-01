@@ -11,7 +11,10 @@
 #define TRUE 1
 #define FALSE 0
 
-
+/**
+ * Recibe la estructura del avion, la limpia y la inicializa con los datos pasados por linea de comando
+ * @param avion, argv
+ */
 void inicializarAvion(ST_AVION * avion, char** argv){
 	printf("*inicializarAvion*\n");
 	int combustibleAvion = 0;
@@ -27,6 +30,12 @@ void inicializarAvion(ST_AVION * avion, char** argv){
 	avion->combustibleMaximo = combustibleAvion;
 }
 
+/**
+ * Abre el archivo avion.bin o lo crea en su defecto.
+ * Registra los datos del avion o chequea si coinciden con los datos del archivo.
+ * Comprueba que una terminal solo pueda registrar un avion
+ *@param avion
+*/
 void comprobarAvion(ST_AVION * avion){
 	printf("*comprobarAvion*\n");
 	FILE * ptrArchivo;
@@ -65,6 +74,10 @@ void comprobarAvion(ST_AVION * avion){
 	fclose(ptrArchivo);
 }
 
+/**
+ * Recibe el estado del avion y lo imprime en pantalla con un formato legible para el usuario
+ * @param estado
+ */
 void mostrarEstado(enum AVIONESTADO estado){
 	switch(estado){
 	case AVION_HANGAR:
@@ -91,6 +104,10 @@ void mostrarEstado(enum AVIONESTADO estado){
 	}
 }
 
+/**
+ * Imprime en pantalla el mensaje del Servidor y el estado del avion: id, modelo, combustible.
+ * @param avion, msjServidor
+ */
 void mostrarEstadoAvion(ST_AVION * avion, char * msjServidor){
 	printf("*mostrarEstadoAvion*\n");
 

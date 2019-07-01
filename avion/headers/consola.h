@@ -17,10 +17,10 @@
 #include "../headers/servidor.h"
 
 enum MENUOPCION{
-	MENU_SALIR_SISTEMA,
-	MENU_REGISTRAR_AVION,
-	MENU_PEDIR_PISTA,
-	MENU_ESTADO_AVION
+	MENU_SALIR_SISTEMA,						/**< Opcion para salir del menu de la consola */
+	MENU_REGISTRAR_AVION,					/**< Envia una peticion al servidor para registrarse en torre de control */
+	MENU_PEDIR_PISTA,						/**< Peticiona para usar la pista, según su estado actual para despegar o aterrizar */
+	MENU_ESTADO_AVION						/**< Opcion para recibir el estado actual del avion */
 };
 
 void iniciarMenuAvion(ST_AVION *, char *, const int *, int *);

@@ -1,0 +1,82 @@
+\hypertarget{TP__avion_8c}{}\doxysection{src/\+T\+P\+\_\+avion.c File Reference}
+\label{TP__avion_8c}\index{src/TP\_avion.c@{src/TP\_avion.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../headers/servidor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../headers/mensaje.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../headers/avion.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../headers/archivo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../headers/consola.\+h\char`\"{}}\newline
+Include dependency graph for T\+P\+\_\+avion.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{TP__avion_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{TP__avion_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{TP__avion_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{TP__avion_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{TP\_avion.c@{TP\_avion.c}!main@{main}}
+\index{main@{main}!TP\_avion.c@{TP\_avion.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 23 of file T\+P\+\_\+avion.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{23                                   \{}
+\DoxyCodeLine{24     \mbox{\hyperlink{archivo_8c_ab8c4c3b46c4a4127c6406558d019e7b4}{comprobarParametrosInicio}}(\&argc);}
+\DoxyCodeLine{25     system(\textcolor{stringliteral}{"clear"});}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{comment}{//VARIABLES}}
+\DoxyCodeLine{28     FILE * ptrArchivoConfigServ = NULL;}
+\DoxyCodeLine{29     \textcolor{keyword}{struct }sockaddr\_in direccionServidor;}
+\DoxyCodeLine{30     \textcolor{keywordtype}{int} servidorTorreControl = 0;}
+\DoxyCodeLine{31     \textcolor{keywordtype}{int} bytesRecibidos = 0;}
+\DoxyCodeLine{32     \textcolor{keywordtype}{int} puertoServidor = 0;}
+\DoxyCodeLine{33     \textcolor{keywordtype}{char} * ipServidor = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*\mbox{\hyperlink{servidor_8h_ae100972d1d7ce57fad95c4658127059c}{LONG\_IP\_SERV}});}
+\DoxyCodeLine{34     \textcolor{keywordtype}{char} * msjServidor = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*\mbox{\hyperlink{mensaje_8h_a9469b1322167bd46d4b657d7ff0f49b8}{LONG\_MSJ\_SERV}}); \textcolor{comment}{//Variable que envia/recive respuesta servidor}}
+\DoxyCodeLine{35     \mbox{\hyperlink{structST__AVION}{ST\_AVION}} * avion = malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structST__AVION}{ST\_AVION}}));}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{comment}{//INICIALIZAR VARIABLES}}
+\DoxyCodeLine{38     \mbox{\hyperlink{mensaje_8c_aea7564d810d8d780d58757aec853c5fa}{inicializarMsjServidor}}(msjServidor);}
+\DoxyCodeLine{39     memset(ipServidor, \textcolor{charliteral}{'\(\backslash\)0'}, \mbox{\hyperlink{servidor_8h_ae100972d1d7ce57fad95c4658127059c}{LONG\_IP\_SERV}});}
+\DoxyCodeLine{40     \mbox{\hyperlink{avion_8c_a568164e9a0dba4f436b6de83b6410852}{inicializarAvion}}(avion, argv);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \mbox{\hyperlink{avion_8c_aed1e1ef777a423c57889e41773e3a8be}{comprobarAvion}}(avion);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     ptrArchivoConfigServ = \mbox{\hyperlink{archivo_8c_a44419ffd0f428604eaaee35c2ed2834c}{abrirArchivo}}(\textcolor{stringliteral}{"config.txt"}, \textcolor{stringliteral}{"r"});}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \mbox{\hyperlink{archivo_8c_a42c5f60558cbce9b0244883168e2cd29}{leerIpPuertoDeArchivo}}(ptrArchivoConfigServ, ipServidor, \&puertoServidor);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     direccionServidor = \mbox{\hyperlink{servidor_8c_a2a30c24ed06b10315329a908d1861102}{crearServidor}}(ipServidor, \&puertoServidor); \textcolor{comment}{//Se crea un servidor con los datos de config.txt}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     servidorTorreControl = socket(AF\_INET, SOCK\_STREAM, 0); \textcolor{comment}{//se pide un socket que devuelve un valor}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \mbox{\hyperlink{servidor_8c_a32a909233d2317e81fbae5d5d7fa3f3b}{conectarConServidor}}(\&servidorTorreControl, \&direccionServidor);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \mbox{\hyperlink{consola_8c_a9ebb4ef020a2802b41932b92561c167e}{iniciarMenuAvion}}(avion, msjServidor, \&servidorTorreControl, \&bytesRecibidos);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     fclose(ptrArchivoConfigServ); \textcolor{comment}{//cierra archivo}}
+\DoxyCodeLine{57     free(ptrArchivoConfigServ); \textcolor{comment}{//Libera punteros}}
+\DoxyCodeLine{58     free(msjServidor);}
+\DoxyCodeLine{59     free(ipServidor);}
+\DoxyCodeLine{60     free(avion);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \textcolor{keywordflow}{return} EXIT\_SUCCESS;}
+\DoxyCodeLine{63 \}}
+
+\end{DoxyCode}

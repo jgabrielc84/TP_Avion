@@ -1,0 +1,216 @@
+\hypertarget{avion_8c}{}\doxysection{sources/avion.c File Reference}
+\label{avion_8c}\index{sources/avion.c@{sources/avion.c}}
+{\ttfamily \#include \char`\"{}../headers/avion.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../headers/mensaje.\+h\char`\"{}}\newline
+Include dependency graph for avion.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{avion_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{avion_8c_aa8cecfc5c5c054d2875c03e77b7be15d}{T\+R\+UE}}~1
+\item 
+\#define \mbox{\hyperlink{avion_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}~0
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{avion_8c_a568164e9a0dba4f436b6de83b6410852}{inicializar\+Avion}} (\mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$avion, char $\ast$$\ast$argv)
+\item 
+void \mbox{\hyperlink{avion_8c_aed1e1ef777a423c57889e41773e3a8be}{comprobar\+Avion}} (\mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$avion)
+\item 
+void \mbox{\hyperlink{avion_8c_a5865af971f1f95848b45c485e2770e9f}{mostrar\+Estado}} (enum \mbox{\hyperlink{avion_8h_a2eca75d95ad6e524ee4dafecbaef278b}{A\+V\+I\+O\+N\+E\+S\+T\+A\+DO}} estado)
+\item 
+void \mbox{\hyperlink{avion_8c_adc5ac415c7f6b70495cc1251591c06ed}{mostrar\+Estado\+Avion}} (\mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$avion, char $\ast$msj\+Servidor)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{avion_8c_aa93f0eb578d23995850d61f7d61c55c1}\label{avion_8c_aa93f0eb578d23995850d61f7d61c55c1}} 
+\index{avion.c@{avion.c}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!avion.c@{avion.c}}
+\doxysubsubsection{\texorpdfstring{FALSE}{FALSE}}
+{\footnotesize\ttfamily \#define F\+A\+L\+SE~0}
+
+
+
+Definition at line 12 of file avion.\+c.
+
+\mbox{\Hypertarget{avion_8c_aa8cecfc5c5c054d2875c03e77b7be15d}\label{avion_8c_aa8cecfc5c5c054d2875c03e77b7be15d}} 
+\index{avion.c@{avion.c}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!avion.c@{avion.c}}
+\doxysubsubsection{\texorpdfstring{TRUE}{TRUE}}
+{\footnotesize\ttfamily \#define T\+R\+UE~1}
+
+
+
+Definition at line 11 of file avion.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{avion_8c_aed1e1ef777a423c57889e41773e3a8be}\label{avion_8c_aed1e1ef777a423c57889e41773e3a8be}} 
+\index{avion.c@{avion.c}!comprobarAvion@{comprobarAvion}}
+\index{comprobarAvion@{comprobarAvion}!avion.c@{avion.c}}
+\doxysubsubsection{\texorpdfstring{comprobarAvion()}{comprobarAvion()}}
+{\footnotesize\ttfamily void comprobar\+Avion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$}]{avion }\end{DoxyParamCaption})}
+
+Abre el archivo avion.\+bin o lo crea en su defecto. Registra los datos del avion o chequea si coinciden con los datos del archivo. Comprueba que una terminal solo pueda registrar un avion 
+\begin{DoxyParams}{Parameters}
+{\em avion} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 39 of file avion.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{39                                      \{}
+\DoxyCodeLine{40     printf(\textcolor{stringliteral}{"*comprobarAvion*\(\backslash\)n"});}
+\DoxyCodeLine{41     FILE * ptrArchivo;}
+\DoxyCodeLine{42     \mbox{\hyperlink{structST__AVION}{ST\_AVION}} * avionAComprobar = malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structST__AVION}{ST\_AVION}}));}
+\DoxyCodeLine{43     \textcolor{keywordtype}{int} encontrado = \mbox{\hyperlink{avion_8c_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{keywordflow}{if} ((ptrArchivo = fopen(\textcolor{stringliteral}{"avion.bin"},\textcolor{stringliteral}{"rb"})) == NULL)\{}
+\DoxyCodeLine{46         printf(\textcolor{stringliteral}{"No se pudo abrir el archivo. Se procede a crea archivo avion.bin\(\backslash\)n"});}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48         \textcolor{keywordflow}{if}((ptrArchivo = fopen(\textcolor{stringliteral}{"avion.bin"},\textcolor{stringliteral}{"wb"})) == NULL)\{}
+\DoxyCodeLine{49             printf(\textcolor{stringliteral}{"No se pudo crear el archivo.\(\backslash\)n"});}
+\DoxyCodeLine{50             exit(EXIT\_FAILURE);}
+\DoxyCodeLine{51         \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{52             printf(\textcolor{stringliteral}{"Archivo avion.bin creado correctamente.\(\backslash\)nVelva a iniciar."});}
+\DoxyCodeLine{53             exit(EXIT\_FAILURE);}
+\DoxyCodeLine{54         \}}
+\DoxyCodeLine{55     \}}
+\DoxyCodeLine{56     fseek(ptrArchivo, 0, SEEK\_SET);}
+\DoxyCodeLine{57     fread(avionAComprobar, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structST__AVION}{ST\_AVION}}), 1, ptrArchivo);}
+\DoxyCodeLine{58     \textcolor{keywordflow}{while}(!feof(ptrArchivo) \&\& encontrado == \mbox{\hyperlink{avion_8c_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}})\{}
+\DoxyCodeLine{59         \textcolor{keywordflow}{if}(strcmp(avion-\/>\mbox{\hyperlink{structST__AVION_a006befd8e19b9bbb16bc6233157c79ea}{identificador}}, avionAComprobar-\/>\mbox{\hyperlink{structST__AVION_a006befd8e19b9bbb16bc6233157c79ea}{identificador}}) == 0)\{}
+\DoxyCodeLine{60            encontrado = \mbox{\hyperlink{avion_8c_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}};}
+\DoxyCodeLine{61         \}}
+\DoxyCodeLine{62         fread(avionAComprobar, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structST__AVION}{ST\_AVION}}), 1, ptrArchivo);}
+\DoxyCodeLine{63     \}}
+\DoxyCodeLine{64     \textcolor{keywordflow}{if}(!feof(ptrArchivo) \&\& encontrado == \mbox{\hyperlink{avion_8c_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}})\{}
+\DoxyCodeLine{65         printf(\textcolor{stringliteral}{"Los datos del avion son correctos.\(\backslash\)n"});}
+\DoxyCodeLine{66         printf(\textcolor{stringliteral}{"\%s"}, avion-\/>\mbox{\hyperlink{structST__AVION_a006befd8e19b9bbb16bc6233157c79ea}{identificador}});  \textcolor{comment}{//BORRAR}}
+\DoxyCodeLine{67     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{68         fseek(ptrArchivo, 0, SEEK\_SET);}
+\DoxyCodeLine{69         fwrite(avion, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structST__AVION}{ST\_AVION}}), 1, ptrArchivo);}
+\DoxyCodeLine{70         printf(\textcolor{stringliteral}{"Los datos del avion se ingresaron al archivo.\(\backslash\)n"});}
+\DoxyCodeLine{71         printf(\textcolor{stringliteral}{"\%s"}, avion-\/>\mbox{\hyperlink{structST__AVION_a006befd8e19b9bbb16bc6233157c79ea}{identificador}});  \textcolor{comment}{//BORRAR}}
+\DoxyCodeLine{72     \}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     fclose(ptrArchivo);}
+\DoxyCodeLine{75 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{avion_8c_a568164e9a0dba4f436b6de83b6410852}\label{avion_8c_a568164e9a0dba4f436b6de83b6410852}} 
+\index{avion.c@{avion.c}!inicializarAvion@{inicializarAvion}}
+\index{inicializarAvion@{inicializarAvion}!avion.c@{avion.c}}
+\doxysubsubsection{\texorpdfstring{inicializarAvion()}{inicializarAvion()}}
+{\footnotesize\ttfamily void inicializar\+Avion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$}]{avion,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Recibe la estructura del avion, la limpia y la inicializa con los datos pasados por linea de comando 
+\begin{DoxyParams}{Parameters}
+{\em avion,argv} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 18 of file avion.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{18                                                     \{}
+\DoxyCodeLine{19     printf(\textcolor{stringliteral}{"*inicializarAvion*\(\backslash\)n"});}
+\DoxyCodeLine{20     \textcolor{keywordtype}{int} combustibleAvion = 0;}
+\DoxyCodeLine{21     memset(avion-\/>\mbox{\hyperlink{structST__AVION_aaf3d37edba5f035e78ee1f2485ba9ba6}{modelo}}, \textcolor{charliteral}{'\(\backslash\)0'}, \mbox{\hyperlink{avion_8h_a0c3bf496ed1c9baeb7d3826d7ecd9778}{LONG\_MODELO}});}
+\DoxyCodeLine{22     memset(avion-\/>\mbox{\hyperlink{structST__AVION_a006befd8e19b9bbb16bc6233157c79ea}{identificador}}, \textcolor{charliteral}{'\(\backslash\)0'}, \mbox{\hyperlink{avion_8h_a712e184482c4b245980ea28ac0a8969d}{LONG\_IDENTIFICADOR}});}
+\DoxyCodeLine{23     avion-\/>\mbox{\hyperlink{structST__AVION_adb5bb0a96407813d7d6bca1d593797ff}{combustibleActual}} = 0;}
+\DoxyCodeLine{24     avion-\/>\mbox{\hyperlink{structST__AVION_ae54bdd51b1a7cfd9bb224518c5a54650}{combustibleMaximo}}=0;}
+\DoxyCodeLine{25     avion-\/>\mbox{\hyperlink{structST__AVION_a3667c4d330daca662e3799f2a8ac94f9}{estado}} = \mbox{\hyperlink{avion_8h_a2eca75d95ad6e524ee4dafecbaef278bacb678e2c14bbd0861385b4fee8c668d9}{AVION\_HANGAR}};}
+\DoxyCodeLine{26     strcpy(avion-\/>\mbox{\hyperlink{structST__AVION_a006befd8e19b9bbb16bc6233157c79ea}{identificador}}, argv[1]);}
+\DoxyCodeLine{27     strcpy(avion-\/>\mbox{\hyperlink{structST__AVION_aaf3d37edba5f035e78ee1f2485ba9ba6}{modelo}}, argv[2]);}
+\DoxyCodeLine{28     sscanf(argv[3], \textcolor{stringliteral}{"\%d"}, \&combustibleAvion);}
+\DoxyCodeLine{29     avion-\/>\mbox{\hyperlink{structST__AVION_adb5bb0a96407813d7d6bca1d593797ff}{combustibleActual}} = combustibleAvion;}
+\DoxyCodeLine{30     avion-\/>\mbox{\hyperlink{structST__AVION_ae54bdd51b1a7cfd9bb224518c5a54650}{combustibleMaximo}} = combustibleAvion;}
+\DoxyCodeLine{31 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{avion_8c_a5865af971f1f95848b45c485e2770e9f}\label{avion_8c_a5865af971f1f95848b45c485e2770e9f}} 
+\index{avion.c@{avion.c}!mostrarEstado@{mostrarEstado}}
+\index{mostrarEstado@{mostrarEstado}!avion.c@{avion.c}}
+\doxysubsubsection{\texorpdfstring{mostrarEstado()}{mostrarEstado()}}
+{\footnotesize\ttfamily void mostrar\+Estado (\begin{DoxyParamCaption}\item[{enum \mbox{\hyperlink{avion_8h_a2eca75d95ad6e524ee4dafecbaef278b}{A\+V\+I\+O\+N\+E\+S\+T\+A\+DO}}}]{estado }\end{DoxyParamCaption})}
+
+Recibe el estado del avion y lo imprime en pantalla con un formato legible para el usuario 
+\begin{DoxyParams}{Parameters}
+{\em estado} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 81 of file avion.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{81                                            \{}
+\DoxyCodeLine{82     \textcolor{keywordflow}{switch}(estado)\{}
+\DoxyCodeLine{83     \textcolor{keywordflow}{case} \mbox{\hyperlink{avion_8h_a2eca75d95ad6e524ee4dafecbaef278bacb678e2c14bbd0861385b4fee8c668d9}{AVION\_HANGAR}}:}
+\DoxyCodeLine{84         printf(\textcolor{stringliteral}{"Estado: HANGAR\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{85         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{86     \textcolor{keywordflow}{case} \mbox{\hyperlink{avion_8h_a2eca75d95ad6e524ee4dafecbaef278bab9c692b959b39d36511c49c4cd408f65}{AVION\_LISTO\_HANGAR}}:}
+\DoxyCodeLine{87         printf(\textcolor{stringliteral}{"Estado: LISTO / HANGAR\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{88         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{89     \textcolor{keywordflow}{case} \mbox{\hyperlink{avion_8h_a2eca75d95ad6e524ee4dafecbaef278ba7aea27fb644a11649db78728ee984969}{AVION\_LISTO\_DESPEGAR}}:}
+\DoxyCodeLine{90         printf(\textcolor{stringliteral}{"Estado: LISTO / DESPEGAR\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{91         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{92     \textcolor{keywordflow}{case} \mbox{\hyperlink{avion_8h_a2eca75d95ad6e524ee4dafecbaef278ba3bd1fbf169cd8586465ff8bd68f5662a}{AVION\_DESPEGANDO}}:}
+\DoxyCodeLine{93         printf(\textcolor{stringliteral}{"Estado: DESPEGANDO\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{94         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{95     \textcolor{keywordflow}{case} \mbox{\hyperlink{avion_8h_a2eca75d95ad6e524ee4dafecbaef278ba71fc05aed313319c1497d14987e851d7}{AVION\_EN\_VUELO}}:}
+\DoxyCodeLine{96         printf(\textcolor{stringliteral}{"Estado: EN VUELO\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{97         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{98     \textcolor{keywordflow}{case} \mbox{\hyperlink{avion_8h_a2eca75d95ad6e524ee4dafecbaef278ba24501d041bd3de355651b67b627a6509}{AVION\_ESPERA\_ATERRIZAR}}:}
+\DoxyCodeLine{99         printf(\textcolor{stringliteral}{"Estado: ESPERA / ATERRIZAR\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{100         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{101     \textcolor{keywordflow}{case} \mbox{\hyperlink{avion_8h_a2eca75d95ad6e524ee4dafecbaef278ba8e6bc9edad7c6f7e5abae057016463b0}{AVION\_ATERRIZANDO}}:}
+\DoxyCodeLine{102         printf(\textcolor{stringliteral}{"Estado: ATERRIZANDO\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{103         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{104     \}}
+\DoxyCodeLine{105 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{avion_8c_adc5ac415c7f6b70495cc1251591c06ed}\label{avion_8c_adc5ac415c7f6b70495cc1251591c06ed}} 
+\index{avion.c@{avion.c}!mostrarEstadoAvion@{mostrarEstadoAvion}}
+\index{mostrarEstadoAvion@{mostrarEstadoAvion}!avion.c@{avion.c}}
+\doxysubsubsection{\texorpdfstring{mostrarEstadoAvion()}{mostrarEstadoAvion()}}
+{\footnotesize\ttfamily void mostrar\+Estado\+Avion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$}]{avion,  }\item[{char $\ast$}]{msj\+Servidor }\end{DoxyParamCaption})}
+
+Imprime en pantalla el mensaje del Servidor y el estado del avion\+: id, modelo, combustible. 
+\begin{DoxyParams}{Parameters}
+{\em avion,msj\+Servidor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 111 of file avion.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{111                                                              \{}
+\DoxyCodeLine{112     printf(\textcolor{stringliteral}{"*mostrarEstadoAvion*\(\backslash\)n"});}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114     \mbox{\hyperlink{mensaje_8c_a070a05c9ddb6e60bf04676f4c65b1a7a}{mostrarMensaje}}(msjServidor);}
+\DoxyCodeLine{115     printf(\textcolor{stringliteral}{"Identificador: \%s\(\backslash\)n"}, avion-\/>\mbox{\hyperlink{structST__AVION_a006befd8e19b9bbb16bc6233157c79ea}{identificador}} );}
+\DoxyCodeLine{116     printf(\textcolor{stringliteral}{"Modelo: \%s\(\backslash\)n"}, avion-\/>\mbox{\hyperlink{structST__AVION_aaf3d37edba5f035e78ee1f2485ba9ba6}{modelo}} );}
+\DoxyCodeLine{117     printf(\textcolor{stringliteral}{"Combustible actual: \%d\(\backslash\)n"}, avion-\/>\mbox{\hyperlink{structST__AVION_adb5bb0a96407813d7d6bca1d593797ff}{combustibleActual}});}
+\DoxyCodeLine{118     \mbox{\hyperlink{avion_8c_a5865af971f1f95848b45c485e2770e9f}{mostrarEstado}}(avion-\/>\mbox{\hyperlink{structST__AVION_a3667c4d330daca662e3799f2a8ac94f9}{estado}});}
+\DoxyCodeLine{119 \}}
+
+\end{DoxyCode}

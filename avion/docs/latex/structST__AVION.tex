@@ -1,0 +1,84 @@
+\hypertarget{structST__AVION}{}\doxysection{S\+T\+\_\+\+A\+V\+I\+ON Struct Reference}
+\label{structST__AVION}\index{ST\_AVION@{ST\_AVION}}
+
+
+{\ttfamily \#include $<$avion.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{structST__AVION_a006befd8e19b9bbb16bc6233157c79ea}{identificador}} \mbox{[}\mbox{\hyperlink{avion_8h_a712e184482c4b245980ea28ac0a8969d}{L\+O\+N\+G\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+C\+A\+D\+OR}}\mbox{]}
+\item 
+char \mbox{\hyperlink{structST__AVION_aaf3d37edba5f035e78ee1f2485ba9ba6}{modelo}} \mbox{[}\mbox{\hyperlink{avion_8h_a0c3bf496ed1c9baeb7d3826d7ecd9778}{L\+O\+N\+G\+\_\+\+M\+O\+D\+E\+LO}}\mbox{]}
+\item 
+int \mbox{\hyperlink{structST__AVION_adb5bb0a96407813d7d6bca1d593797ff}{combustible\+Actual}}
+\item 
+int \mbox{\hyperlink{structST__AVION_ae54bdd51b1a7cfd9bb224518c5a54650}{combustible\+Maximo}}
+\item 
+enum \mbox{\hyperlink{avion_8h_a2eca75d95ad6e524ee4dafecbaef278b}{A\+V\+I\+O\+N\+E\+S\+T\+A\+DO}} \mbox{\hyperlink{structST__AVION_a3667c4d330daca662e3799f2a8ac94f9}{estado}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Se define la estructura del avion, con un identificador para poder ser registrado en torre de control, un modelo para saber que tipo de avion es, su capacidad de combustible y un registro de la cantidad actual, y una enumeracion de posibles estados en que se pueda encontrar. 
+
+Definition at line 35 of file avion.\+h.
+
+
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structST__AVION_adb5bb0a96407813d7d6bca1d593797ff}\label{structST__AVION_adb5bb0a96407813d7d6bca1d593797ff}} 
+\index{ST\_AVION@{ST\_AVION}!combustibleActual@{combustibleActual}}
+\index{combustibleActual@{combustibleActual}!ST\_AVION@{ST\_AVION}}
+\doxysubsubsection{\texorpdfstring{combustibleActual}{combustibleActual}}
+{\footnotesize\ttfamily int S\+T\+\_\+\+A\+V\+I\+O\+N\+::combustible\+Actual}
+
+Cantidad de combustible en tanque. 
+
+Definition at line 38 of file avion.\+h.
+
+\mbox{\Hypertarget{structST__AVION_ae54bdd51b1a7cfd9bb224518c5a54650}\label{structST__AVION_ae54bdd51b1a7cfd9bb224518c5a54650}} 
+\index{ST\_AVION@{ST\_AVION}!combustibleMaximo@{combustibleMaximo}}
+\index{combustibleMaximo@{combustibleMaximo}!ST\_AVION@{ST\_AVION}}
+\doxysubsubsection{\texorpdfstring{combustibleMaximo}{combustibleMaximo}}
+{\footnotesize\ttfamily int S\+T\+\_\+\+A\+V\+I\+O\+N\+::combustible\+Maximo}
+
+Capacidad maxima de combustible que el avion puede tener. 
+
+Definition at line 39 of file avion.\+h.
+
+\mbox{\Hypertarget{structST__AVION_a3667c4d330daca662e3799f2a8ac94f9}\label{structST__AVION_a3667c4d330daca662e3799f2a8ac94f9}} 
+\index{ST\_AVION@{ST\_AVION}!estado@{estado}}
+\index{estado@{estado}!ST\_AVION@{ST\_AVION}}
+\doxysubsubsection{\texorpdfstring{estado}{estado}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{avion_8h_a2eca75d95ad6e524ee4dafecbaef278b}{A\+V\+I\+O\+N\+E\+S\+T\+A\+DO}} S\+T\+\_\+\+A\+V\+I\+O\+N\+::estado}
+
+Situacion actual del avion. 
+
+Definition at line 40 of file avion.\+h.
+
+\mbox{\Hypertarget{structST__AVION_a006befd8e19b9bbb16bc6233157c79ea}\label{structST__AVION_a006befd8e19b9bbb16bc6233157c79ea}} 
+\index{ST\_AVION@{ST\_AVION}!identificador@{identificador}}
+\index{identificador@{identificador}!ST\_AVION@{ST\_AVION}}
+\doxysubsubsection{\texorpdfstring{identificador}{identificador}}
+{\footnotesize\ttfamily char S\+T\+\_\+\+A\+V\+I\+O\+N\+::identificador\mbox{[}\mbox{\hyperlink{avion_8h_a712e184482c4b245980ea28ac0a8969d}{L\+O\+N\+G\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+C\+A\+D\+OR}}\mbox{]}}
+
+Codigo identificador unico del avion. 
+
+Definition at line 36 of file avion.\+h.
+
+\mbox{\Hypertarget{structST__AVION_aaf3d37edba5f035e78ee1f2485ba9ba6}\label{structST__AVION_aaf3d37edba5f035e78ee1f2485ba9ba6}} 
+\index{ST\_AVION@{ST\_AVION}!modelo@{modelo}}
+\index{modelo@{modelo}!ST\_AVION@{ST\_AVION}}
+\doxysubsubsection{\texorpdfstring{modelo}{modelo}}
+{\footnotesize\ttfamily char S\+T\+\_\+\+A\+V\+I\+O\+N\+::modelo\mbox{[}\mbox{\hyperlink{avion_8h_a0c3bf496ed1c9baeb7d3826d7ecd9778}{L\+O\+N\+G\+\_\+\+M\+O\+D\+E\+LO}}\mbox{]}}
+
+Tipo de avion. 
+
+Definition at line 37 of file avion.\+h.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+headers/\mbox{\hyperlink{avion_8h}{avion.\+h}}\end{DoxyCompactItemize}

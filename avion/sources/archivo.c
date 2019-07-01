@@ -10,7 +10,10 @@
 
 #define LONG_LINEALEIDA 50
 
-
+/**
+ * Comprueba cantidad de parametros ingresados del avion.
+ * @param argc
+ */
 void comprobarParametrosInicio(int * argc){
 	if(*argc != 4){
 		printf("Error al ejecutar el archivo!\n\n");
@@ -18,6 +21,11 @@ void comprobarParametrosInicio(int * argc){
 	}
 }
 
+/**
+ * Abre el archivo y confirma su correcta apertura. Devuelve un puntero.
+ * @param nombreArchivo, modoApertura
+ * @return FILE*
+ */
 FILE * abrirArchivo(const char * nombreArchivo, const char * modoApertura){
 	printf("*abrirArchivo %s*\n", nombreArchivo);
 
@@ -33,6 +41,10 @@ FILE * abrirArchivo(const char * nombreArchivo, const char * modoApertura){
 	return ptrArchivo;
 }
 
+/**
+ * Lee primera linea del archivo de configuración, parsea linea y modifica los parametros ip y puerto
+ * @param ptrArchivoConfigServ, ip, puerto
+ */
 void leerIpPuertoDeArchivo(FILE * ptrArchivoConfigServ, char * ip, int * puerto){
 	printf("*leerIpPuerto*\n");
 	char * lineaLeida = malloc((sizeof(char))*LONG_LINEALEIDA);

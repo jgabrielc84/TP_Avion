@@ -7,18 +7,29 @@
 
 #include "../headers/mensaje.h"
 
-
+/**
+ *
+ */
 void liberarBuffer(){
 	char c;
 	while((c = getchar()) != '\n' && c != EOF);
 }
 
+/**
+ * Limpia el parametro recibido por referencia
+ * @param msjServidor
+ */
 void inicializarMsjServidor(char * msjServidor){
 	printf("*inicializarMsjServidor*\n");
 
 	memset(msjServidor, '\0', LONG_MSJ_SERV);
 }
 
+/**
+ * Recibe la estructura del avion y datos del mismo
+ * Recibe un char* por referencia en el cual se concatenan estos datos para ser enviados al Servidor
+ * @param msjServidor, avion, combustibleActAvion, combustibleMaxAvcion, estadoAvion, opcionAvion
+ */
 void concatenarMsjServidor(char * msjServidor, const ST_AVION * avion,const char * combustibleActAvion, const char * combustibleMaxAvion, const char * estadoAvion, const char * opcionAvion){
 	printf("*concatenarMsjServidor*\n");
 
@@ -35,6 +46,11 @@ void concatenarMsjServidor(char * msjServidor, const ST_AVION * avion,const char
 	strcat(msjServidor, opcionAvion);
 }
 
+/**
+ * Crea punteros de variables de ST_AVION con sus correspondientes reservas de memoria,
+ * Rellena esas variables con los datos de la ST_AVION recibida. Llama a concatenarMsjServidor y libera punteros.
+ * @param msjServidor, avion, opcion
+ */
 void formatearMensaje(char * msjServidor, const ST_AVION * avion, const int * opcion){
 	printf("*formatearMensaje*\n");
 
@@ -62,6 +78,11 @@ void formatearMensaje(char * msjServidor, const ST_AVION * avion, const int * op
 	free(opcionAvion);
 }
 
+/**
+ * Recibe el mensaje del Servidor, el cual separa y toma cada dato para ser guardado en
+ * la variable correspondiente dentro de la estructura del avion recibida por referencia
+ * @param avion, msjServidor
+ */
 void parsearMensaje(ST_AVION * avion, char * msjServidor){
 	printf("*parsearMensaje*\n");
 
@@ -79,6 +100,10 @@ void parsearMensaje(ST_AVION * avion, char * msjServidor){
 	strcpy(msjServidor, strtok(NULL, "\0"));
 }
 
+/**
+ * Imprime en pantalla el mensaje recibido del Servidor sin parsear.
+ * @param msjServidor
+ */
 void mostrarMensaje(char * msjServidor){
 	printf("*mostrarMensaje*\n");
 

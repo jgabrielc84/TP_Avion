@@ -9,6 +9,10 @@
 #include "../headers/mensaje.h"
 #include "../headers/servidor.h"
 
+/**
+ * Imprime en pantalla el menu principal
+ */
+
 void mostrarMenuPrincipal(){
 	printf("\t-Menu AVION-\n\n");
 	printf("[1] - Registrar en torre de control\n");
@@ -17,6 +21,12 @@ void mostrarMenuPrincipal(){
 	printf("[0] - Salir\n\n");
 	printf("\tOpcion: ");
 }
+
+/**
+ * Recibe todos los parametros necesarios para proceder con cualquiera de las opciones del menu
+
+ * @param avion, msjServidor, servidorTorreControl, bytesRecibidos
+ */
 
 void iniciarMenuAvion(ST_AVION * avion, char * msjServidor, const int * servidorTorreControl, int * bytesRecibidos){
 	int opcion = -1;
