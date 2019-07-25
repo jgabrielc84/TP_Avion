@@ -1,0 +1,12 @@
+<map id="headers/mensaje.h" name="headers/mensaje.h">
+<area shape="rect" id="node1" title=" " alt="" coords="382,5,514,32"/>
+<area shape="rect" id="node2" href="$archivo_8h.html" title=" " alt="" coords="56,80,181,107"/>
+<area shape="rect" id="node4" href="$TP__avion_8c.html" title=" " alt="" coords="214,229,325,256"/>
+<area shape="rect" id="node5" href="$avion_8c.html" title=" " alt="" coords="715,80,829,107"/>
+<area shape="rect" id="node6" href="$consola_8h.html" title=" " alt="" coords="256,155,384,181"/>
+<area shape="rect" id="node7" href="$consola_8c.html" title=" " alt="" coords="408,229,536,256"/>
+<area shape="rect" id="node8" href="$servidor_8h.html" title=" " alt="" coords="383,80,513,107"/>
+<area shape="rect" id="node10" href="$mensaje_8c.html" title=" " alt="" coords="854,80,986,107"/>
+<area shape="rect" id="node3" href="$archivo_8c.html" title=" " alt="" coords="5,155,131,181"/>
+<area shape="rect" id="node9" href="$servidor_8c.html" title=" " alt="" coords="510,155,639,181"/>
+</map>

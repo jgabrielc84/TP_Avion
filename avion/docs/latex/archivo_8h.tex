@@ -1,0 +1,124 @@
+\hypertarget{archivo_8h}{}\doxysection{headers/archivo.h File Reference}
+\label{archivo_8h}\index{headers/archivo.h@{headers/archivo.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../headers/mensaje.\+h\char`\"{}}\newline
+Include dependency graph for archivo.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{archivo_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{archivo_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{archivo_8h_ab8c4c3b46c4a4127c6406558d019e7b4}{comprobar\+Parametros\+Inicio}} (int $\ast$argc)
+\item 
+F\+I\+LE $\ast$ \mbox{\hyperlink{archivo_8h_a44419ffd0f428604eaaee35c2ed2834c}{abrir\+Archivo}} (const char $\ast$nombre\+Archivo, const char $\ast$modo\+Apertura)
+\item 
+void \mbox{\hyperlink{archivo_8h_a36cc32012b2c98dfb7ffac8b78a3d895}{leer\+Ip\+Puerto\+De\+Archivo}} (F\+I\+LE $\ast$, char $\ast$, int $\ast$)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{archivo_8h_a44419ffd0f428604eaaee35c2ed2834c}\label{archivo_8h_a44419ffd0f428604eaaee35c2ed2834c}} 
+\index{archivo.h@{archivo.h}!abrirArchivo@{abrirArchivo}}
+\index{abrirArchivo@{abrirArchivo}!archivo.h@{archivo.h}}
+\doxysubsubsection{\texorpdfstring{abrirArchivo()}{abrirArchivo()}}
+{\footnotesize\ttfamily F\+I\+LE$\ast$ abrir\+Archivo (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nombre\+Archivo,  }\item[{const char $\ast$}]{modo\+Apertura }\end{DoxyParamCaption})}
+
+Abre el archivo y confirma su correcta apertura. Devuelve un puntero. 
+\begin{DoxyParams}{Parameters}
+{\em nombre\+Archivo,modo\+Apertura} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+F\+I\+L\+E$\ast$ 
+\end{DoxyReturn}
+
+
+Definition at line 29 of file archivo.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29                                                                           \{}
+\DoxyCodeLine{30     printf(\textcolor{stringliteral}{"*abrirArchivo \%s*\(\backslash\)n"}, nombreArchivo);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     FILE * ptrArchivo = NULL;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordflow}{if}((ptrArchivo = fopen(nombreArchivo, modoApertura)) == NULL)\{}
+\DoxyCodeLine{35         printf(\textcolor{stringliteral}{"Error al abrir archivo \%s\(\backslash\)n"}, nombreArchivo);}
+\DoxyCodeLine{36         exit(EXIT\_FAILURE);}
+\DoxyCodeLine{37     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{38         printf(\textcolor{stringliteral}{"Archivo \%s abierto correctamente.\(\backslash\)n\(\backslash\)n"}, nombreArchivo);}
+\DoxyCodeLine{39     \}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{keywordflow}{return} ptrArchivo;}
+\DoxyCodeLine{42 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{archivo_8h_ab8c4c3b46c4a4127c6406558d019e7b4}\label{archivo_8h_ab8c4c3b46c4a4127c6406558d019e7b4}} 
+\index{archivo.h@{archivo.h}!comprobarParametrosInicio@{comprobarParametrosInicio}}
+\index{comprobarParametrosInicio@{comprobarParametrosInicio}!archivo.h@{archivo.h}}
+\doxysubsubsection{\texorpdfstring{comprobarParametrosInicio()}{comprobarParametrosInicio()}}
+{\footnotesize\ttfamily void comprobar\+Parametros\+Inicio (\begin{DoxyParamCaption}\item[{int $\ast$}]{argc }\end{DoxyParamCaption})}
+
+Comprueba cantidad de parametros ingresados del avion. 
+\begin{DoxyParams}{Parameters}
+{\em argc} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 17 of file archivo.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17                                           \{}
+\DoxyCodeLine{18     \textcolor{keywordflow}{if}(*argc != 4)\{}
+\DoxyCodeLine{19         printf(\textcolor{stringliteral}{"Error al ejecutar el archivo!\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{20         exit(EXIT\_FAILURE);}
+\DoxyCodeLine{21     \}}
+\DoxyCodeLine{22 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{archivo_8h_a36cc32012b2c98dfb7ffac8b78a3d895}\label{archivo_8h_a36cc32012b2c98dfb7ffac8b78a3d895}} 
+\index{archivo.h@{archivo.h}!leerIpPuertoDeArchivo@{leerIpPuertoDeArchivo}}
+\index{leerIpPuertoDeArchivo@{leerIpPuertoDeArchivo}!archivo.h@{archivo.h}}
+\doxysubsubsection{\texorpdfstring{leerIpPuertoDeArchivo()}{leerIpPuertoDeArchivo()}}
+{\footnotesize\ttfamily void leer\+Ip\+Puerto\+De\+Archivo (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{ptr\+Archivo\+Config\+Serv,  }\item[{char $\ast$}]{ip,  }\item[{int $\ast$}]{puerto }\end{DoxyParamCaption})}
+
+Lee primera linea del archivo de configuración, parsea linea y modifica los parametros ip y puerto 
+\begin{DoxyParams}{Parameters}
+{\em ptr\+Archivo\+Config\+Serv,ip,puerto} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 48 of file archivo.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{48                                                                                 \{}
+\DoxyCodeLine{49     printf(\textcolor{stringliteral}{"*leerIpPuerto*\(\backslash\)n"});}
+\DoxyCodeLine{50     \textcolor{keywordtype}{char} * lineaLeida = malloc((\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}))*\mbox{\hyperlink{archivo_8c_a9864874aa08d5fd778ea790dcf7a70e4}{LONG\_LINEALEIDA}});}
+\DoxyCodeLine{51     memset(lineaLeida, \textcolor{charliteral}{'\(\backslash\)0'}, \mbox{\hyperlink{archivo_8c_a9864874aa08d5fd778ea790dcf7a70e4}{LONG\_LINEALEIDA}}); \textcolor{comment}{//Se inicializa la variable}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     fgets(lineaLeida, \mbox{\hyperlink{archivo_8c_a9864874aa08d5fd778ea790dcf7a70e4}{LONG\_LINEALEIDA}}, ptrArchivoConfigServ);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     strtok(lineaLeida, \textcolor{stringliteral}{"="});}
+\DoxyCodeLine{56     strcpy(ip, strtok(NULL, \textcolor{stringliteral}{" "}));}
+\DoxyCodeLine{57     *puerto = atoi(strtok(NULL, \textcolor{stringliteral}{";"}));}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     free(lineaLeida);}
+\DoxyCodeLine{60 \}}
+
+\end{DoxyCode}

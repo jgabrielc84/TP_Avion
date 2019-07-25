@@ -1,4 +1,4 @@
-/*
+/* TP_avion
  * mensaje.h
  *
  *  Created on: 15 may. 2019
@@ -11,24 +11,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../headers/avion.h"
 
-#define LONG_ORIGEN 20
-#define LONG_DESTINO 20
-#define LONG_MENSAJE 50
-#define LONG_MSG_SERV LONG_ORIGEN+LONG_DESTINO+LONG_MENSAJE+3
+#define LONG_MSJ_SERV 120+1
+#define LONG_COMBUSTIBLEAVION 10+1
+#define LONG_ESTADOAVION 1+1
+#define LONG_OPCIONAVION 1+1
 
+void liberarBuffer();
 
-typedef struct{
-	char origen[LONG_ORIGEN+1];
-	char destino[LONG_DESTINO+1];
-	char mensaje[LONG_MENSAJE+1];
-}ST_MENSAJE;
+void inicializarMsjServidor(char *);
 
+void formatearMensaje(char *, const ST_AVION *, const int *);
 
-void inicializarST_MENSAJE(ST_MENSAJE * mensaje);
+void mostrarMensaje(char *);
 
-void crearSTMensaje(ST_MENSAJE * msj, const char * ipOrigen, const char * ipDestino, const char * mensaje);
-
+void parsearMensaje(ST_AVION *, char *);
 
 
 #endif /* HEADERS_MENSAJE_H_ */

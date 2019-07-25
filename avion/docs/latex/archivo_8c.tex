@@ -1,0 +1,133 @@
+\hypertarget{archivo_8c}{}\doxysection{sources/archivo.c File Reference}
+\label{archivo_8c}\index{sources/archivo.c@{sources/archivo.c}}
+{\ttfamily \#include \char`\"{}../headers/archivo.\+h\char`\"{}}\newline
+Include dependency graph for archivo.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{archivo_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{archivo_8c_a9864874aa08d5fd778ea790dcf7a70e4}{L\+O\+N\+G\+\_\+\+L\+I\+N\+E\+A\+L\+E\+I\+DA}}~50
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{archivo_8c_ab8c4c3b46c4a4127c6406558d019e7b4}{comprobar\+Parametros\+Inicio}} (int $\ast$argc)
+\item 
+F\+I\+LE $\ast$ \mbox{\hyperlink{archivo_8c_a44419ffd0f428604eaaee35c2ed2834c}{abrir\+Archivo}} (const char $\ast$nombre\+Archivo, const char $\ast$modo\+Apertura)
+\item 
+void \mbox{\hyperlink{archivo_8c_a42c5f60558cbce9b0244883168e2cd29}{leer\+Ip\+Puerto\+De\+Archivo}} (F\+I\+LE $\ast$ptr\+Archivo\+Config\+Serv, char $\ast$ip, int $\ast$puerto)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{archivo_8c_a9864874aa08d5fd778ea790dcf7a70e4}\label{archivo_8c_a9864874aa08d5fd778ea790dcf7a70e4}} 
+\index{archivo.c@{archivo.c}!LONG\_LINEALEIDA@{LONG\_LINEALEIDA}}
+\index{LONG\_LINEALEIDA@{LONG\_LINEALEIDA}!archivo.c@{archivo.c}}
+\doxysubsubsection{\texorpdfstring{LONG\_LINEALEIDA}{LONG\_LINEALEIDA}}
+{\footnotesize\ttfamily \#define L\+O\+N\+G\+\_\+\+L\+I\+N\+E\+A\+L\+E\+I\+DA~50}
+
+
+
+Definition at line 11 of file archivo.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{archivo_8c_a44419ffd0f428604eaaee35c2ed2834c}\label{archivo_8c_a44419ffd0f428604eaaee35c2ed2834c}} 
+\index{archivo.c@{archivo.c}!abrirArchivo@{abrirArchivo}}
+\index{abrirArchivo@{abrirArchivo}!archivo.c@{archivo.c}}
+\doxysubsubsection{\texorpdfstring{abrirArchivo()}{abrirArchivo()}}
+{\footnotesize\ttfamily F\+I\+LE$\ast$ abrir\+Archivo (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nombre\+Archivo,  }\item[{const char $\ast$}]{modo\+Apertura }\end{DoxyParamCaption})}
+
+Abre el archivo y confirma su correcta apertura. Devuelve un puntero. 
+\begin{DoxyParams}{Parameters}
+{\em nombre\+Archivo,modo\+Apertura} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+F\+I\+L\+E$\ast$ 
+\end{DoxyReturn}
+
+
+Definition at line 29 of file archivo.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29                                                                           \{}
+\DoxyCodeLine{30     printf(\textcolor{stringliteral}{"*abrirArchivo \%s*\(\backslash\)n"}, nombreArchivo);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     FILE * ptrArchivo = NULL;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordflow}{if}((ptrArchivo = fopen(nombreArchivo, modoApertura)) == NULL)\{}
+\DoxyCodeLine{35         printf(\textcolor{stringliteral}{"Error al abrir archivo \%s\(\backslash\)n"}, nombreArchivo);}
+\DoxyCodeLine{36         exit(EXIT\_FAILURE);}
+\DoxyCodeLine{37     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{38         printf(\textcolor{stringliteral}{"Archivo \%s abierto correctamente.\(\backslash\)n\(\backslash\)n"}, nombreArchivo);}
+\DoxyCodeLine{39     \}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{keywordflow}{return} ptrArchivo;}
+\DoxyCodeLine{42 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{archivo_8c_ab8c4c3b46c4a4127c6406558d019e7b4}\label{archivo_8c_ab8c4c3b46c4a4127c6406558d019e7b4}} 
+\index{archivo.c@{archivo.c}!comprobarParametrosInicio@{comprobarParametrosInicio}}
+\index{comprobarParametrosInicio@{comprobarParametrosInicio}!archivo.c@{archivo.c}}
+\doxysubsubsection{\texorpdfstring{comprobarParametrosInicio()}{comprobarParametrosInicio()}}
+{\footnotesize\ttfamily void comprobar\+Parametros\+Inicio (\begin{DoxyParamCaption}\item[{int $\ast$}]{argc }\end{DoxyParamCaption})}
+
+Comprueba cantidad de parametros ingresados del avion. 
+\begin{DoxyParams}{Parameters}
+{\em argc} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 17 of file archivo.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17                                           \{}
+\DoxyCodeLine{18     \textcolor{keywordflow}{if}(*argc != 4)\{}
+\DoxyCodeLine{19         printf(\textcolor{stringliteral}{"Error al ejecutar el archivo!\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{20         exit(EXIT\_FAILURE);}
+\DoxyCodeLine{21     \}}
+\DoxyCodeLine{22 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{archivo_8c_a42c5f60558cbce9b0244883168e2cd29}\label{archivo_8c_a42c5f60558cbce9b0244883168e2cd29}} 
+\index{archivo.c@{archivo.c}!leerIpPuertoDeArchivo@{leerIpPuertoDeArchivo}}
+\index{leerIpPuertoDeArchivo@{leerIpPuertoDeArchivo}!archivo.c@{archivo.c}}
+\doxysubsubsection{\texorpdfstring{leerIpPuertoDeArchivo()}{leerIpPuertoDeArchivo()}}
+{\footnotesize\ttfamily void leer\+Ip\+Puerto\+De\+Archivo (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{ptr\+Archivo\+Config\+Serv,  }\item[{char $\ast$}]{ip,  }\item[{int $\ast$}]{puerto }\end{DoxyParamCaption})}
+
+Lee primera linea del archivo de configuración, parsea linea y modifica los parametros ip y puerto 
+\begin{DoxyParams}{Parameters}
+{\em ptr\+Archivo\+Config\+Serv,ip,puerto} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 48 of file archivo.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{48                                                                                 \{}
+\DoxyCodeLine{49     printf(\textcolor{stringliteral}{"*leerIpPuerto*\(\backslash\)n"});}
+\DoxyCodeLine{50     \textcolor{keywordtype}{char} * lineaLeida = malloc((\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}))*\mbox{\hyperlink{archivo_8c_a9864874aa08d5fd778ea790dcf7a70e4}{LONG\_LINEALEIDA}});}
+\DoxyCodeLine{51     memset(lineaLeida, \textcolor{charliteral}{'\(\backslash\)0'}, \mbox{\hyperlink{archivo_8c_a9864874aa08d5fd778ea790dcf7a70e4}{LONG\_LINEALEIDA}}); \textcolor{comment}{//Se inicializa la variable}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     fgets(lineaLeida, \mbox{\hyperlink{archivo_8c_a9864874aa08d5fd778ea790dcf7a70e4}{LONG\_LINEALEIDA}}, ptrArchivoConfigServ);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     strtok(lineaLeida, \textcolor{stringliteral}{"="});}
+\DoxyCodeLine{56     strcpy(ip, strtok(NULL, \textcolor{stringliteral}{" "}));}
+\DoxyCodeLine{57     *puerto = atoi(strtok(NULL, \textcolor{stringliteral}{";"}));}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     free(lineaLeida);}
+\DoxyCodeLine{60 \}}
+
+\end{DoxyCode}

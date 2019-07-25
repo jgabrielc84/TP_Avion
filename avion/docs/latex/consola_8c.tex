@@ -1,0 +1,104 @@
+\hypertarget{consola_8c}{}\doxysection{sources/consola.c File Reference}
+\label{consola_8c}\index{sources/consola.c@{sources/consola.c}}
+{\ttfamily \#include \char`\"{}../headers/consola.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../headers/mensaje.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../headers/servidor.\+h\char`\"{}}\newline
+Include dependency graph for consola.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{consola_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{consola_8c_a476b760037c5062b609f62bcf13f21ef}{mostrar\+Menu\+Principal}} ()
+\item 
+void \mbox{\hyperlink{consola_8c_a9ebb4ef020a2802b41932b92561c167e}{iniciar\+Menu\+Avion}} (\mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$avion, char $\ast$msj\+Servidor, const int $\ast$servidor\+Torre\+Control, int $\ast$bytes\+Recibidos)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{consola_8c_a9ebb4ef020a2802b41932b92561c167e}\label{consola_8c_a9ebb4ef020a2802b41932b92561c167e}} 
+\index{consola.c@{consola.c}!iniciarMenuAvion@{iniciarMenuAvion}}
+\index{iniciarMenuAvion@{iniciarMenuAvion}!consola.c@{consola.c}}
+\doxysubsubsection{\texorpdfstring{iniciarMenuAvion()}{iniciarMenuAvion()}}
+{\footnotesize\ttfamily void iniciar\+Menu\+Avion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structST__AVION}{S\+T\+\_\+\+A\+V\+I\+ON}} $\ast$}]{avion,  }\item[{char $\ast$}]{msj\+Servidor,  }\item[{const int $\ast$}]{servidor\+Torre\+Control,  }\item[{int $\ast$}]{bytes\+Recibidos }\end{DoxyParamCaption})}
+
+Recibe todos los parametros necesarios para proceder con cualquiera de las opciones del menu
+
+
+\begin{DoxyParams}{Parameters}
+{\em avion,msj\+Servidor,servidor\+Torre\+Control,bytes\+Recibidos} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 31 of file consola.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{31                                                                                                                    \{}
+\DoxyCodeLine{32     \textcolor{keywordtype}{int} opcion = -\/1;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     system(\textcolor{stringliteral}{"clear"});}
+\DoxyCodeLine{35     \textcolor{keywordflow}{while}(opcion != \mbox{\hyperlink{consola_8h_a063d90330f2746ba108ec8d2e1295fdea6f1e730c18236ab703c9f75643451397}{MENU\_SALIR\_SISTEMA}} \&\& opcion != \mbox{\hyperlink{consola_8h_a063d90330f2746ba108ec8d2e1295fdea5df431320605ec2ba6c7685851b2a619}{MENU\_REGISTRAR\_AVION}} \&\& opcion != \mbox{\hyperlink{consola_8h_a063d90330f2746ba108ec8d2e1295fdeaed6b1162347217e8f16432e0aa610433}{MENU\_PEDIR\_PISTA}} \&\& opcion != \mbox{\hyperlink{consola_8h_a063d90330f2746ba108ec8d2e1295fdea3519254e97744d0d514ad7207573ef0a}{MENU\_ESTADO\_AVION}})\{}
+\DoxyCodeLine{36         \mbox{\hyperlink{consola_8c_a476b760037c5062b609f62bcf13f21ef}{mostrarMenuPrincipal}}();}
+\DoxyCodeLine{37         scanf(\textcolor{stringliteral}{"\%d"}, \&opcion);}
+\DoxyCodeLine{38         \mbox{\hyperlink{mensaje_8c_acf25b5874aa3455a221c1a6dddec020e}{liberarBuffer}}();}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40         \textcolor{keywordflow}{switch}(opcion)\{}
+\DoxyCodeLine{41         \textcolor{keywordflow}{case} \mbox{\hyperlink{consola_8h_a063d90330f2746ba108ec8d2e1295fdea5df431320605ec2ba6c7685851b2a619}{MENU\_REGISTRAR\_AVION}}:}
+\DoxyCodeLine{42         \textcolor{keywordflow}{case} \mbox{\hyperlink{consola_8h_a063d90330f2746ba108ec8d2e1295fdeaed6b1162347217e8f16432e0aa610433}{MENU\_PEDIR\_PISTA}}:}
+\DoxyCodeLine{43             \mbox{\hyperlink{servidor_8c_a3047c3860e715d7e2d84e0d10ad297ba}{enviarSolicitudAServidor}}(msjServidor, avion, \&opcion, servidorTorreControl);}
+\DoxyCodeLine{44             \mbox{\hyperlink{servidor_8c_adbfb27e50994e42927d2c30819127dd3}{recibirMensaje}}(bytesRecibidos, servidorTorreControl, msjServidor);}
+\DoxyCodeLine{45             \mbox{\hyperlink{mensaje_8c_ad64634959d377f47107571f102673d86}{parsearMensaje}}(avion, msjServidor);}
+\DoxyCodeLine{46             system(\textcolor{stringliteral}{"clear"});}
+\DoxyCodeLine{47             \mbox{\hyperlink{mensaje_8c_a070a05c9ddb6e60bf04676f4c65b1a7a}{mostrarMensaje}}(msjServidor);}
+\DoxyCodeLine{48             opcion = -\/1;}
+\DoxyCodeLine{49             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{50         \textcolor{keywordflow}{case} \mbox{\hyperlink{consola_8h_a063d90330f2746ba108ec8d2e1295fdea3519254e97744d0d514ad7207573ef0a}{MENU\_ESTADO\_AVION}}:}
+\DoxyCodeLine{51             \mbox{\hyperlink{servidor_8c_a3047c3860e715d7e2d84e0d10ad297ba}{enviarSolicitudAServidor}}(msjServidor, avion, \&opcion, servidorTorreControl);}
+\DoxyCodeLine{52             \mbox{\hyperlink{servidor_8c_adbfb27e50994e42927d2c30819127dd3}{recibirMensaje}}(bytesRecibidos, servidorTorreControl, msjServidor);}
+\DoxyCodeLine{53             \mbox{\hyperlink{mensaje_8c_ad64634959d377f47107571f102673d86}{parsearMensaje}}(avion, msjServidor);}
+\DoxyCodeLine{54             system(\textcolor{stringliteral}{"clear"});}
+\DoxyCodeLine{55             \mbox{\hyperlink{avion_8c_adc5ac415c7f6b70495cc1251591c06ed}{mostrarEstadoAvion}}(avion, msjServidor);}
+\DoxyCodeLine{56             opcion = -\/1;}
+\DoxyCodeLine{57             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{58         \textcolor{keywordflow}{case} \mbox{\hyperlink{consola_8h_a063d90330f2746ba108ec8d2e1295fdea6f1e730c18236ab703c9f75643451397}{MENU\_SALIR\_SISTEMA}}:}
+\DoxyCodeLine{59             system(\textcolor{stringliteral}{"clear"});}
+\DoxyCodeLine{60             printf(\textcolor{stringliteral}{"Que tenga un buen dia!\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{61             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{62         \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{63             system(\textcolor{stringliteral}{"clear"});}
+\DoxyCodeLine{64             printf(\textcolor{stringliteral}{"\(\backslash\)nLa opcion elegida es incorrecta!\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{65             sleep(1);}
+\DoxyCodeLine{66             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{67         \}}
+\DoxyCodeLine{68     \}}
+\DoxyCodeLine{69 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{consola_8c_a476b760037c5062b609f62bcf13f21ef}\label{consola_8c_a476b760037c5062b609f62bcf13f21ef}} 
+\index{consola.c@{consola.c}!mostrarMenuPrincipal@{mostrarMenuPrincipal}}
+\index{mostrarMenuPrincipal@{mostrarMenuPrincipal}!consola.c@{consola.c}}
+\doxysubsubsection{\texorpdfstring{mostrarMenuPrincipal()}{mostrarMenuPrincipal()}}
+{\footnotesize\ttfamily void mostrar\+Menu\+Principal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Imprime en pantalla el menu principal 
+
+Definition at line 16 of file consola.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16                            \{}
+\DoxyCodeLine{17     printf(\textcolor{stringliteral}{"\(\backslash\)t-\/Menu AVION-\/\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{18     printf(\textcolor{stringliteral}{"[1] -\/ Registrar en torre de control\(\backslash\)n"});}
+\DoxyCodeLine{19     printf(\textcolor{stringliteral}{"[2] -\/ Pedir pista\(\backslash\)n"});}
+\DoxyCodeLine{20     printf(\textcolor{stringliteral}{"[3] -\/ Estado\(\backslash\)n"});}
+\DoxyCodeLine{21     printf(\textcolor{stringliteral}{"[0] -\/ Salir\(\backslash\)n\(\backslash\)n"});}
+\DoxyCodeLine{22     printf(\textcolor{stringliteral}{"\(\backslash\)tOpcion: "});}
+\DoxyCodeLine{23 \}}
+
+\end{DoxyCode}

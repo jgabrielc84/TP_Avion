@@ -1,7 +1,7 @@
 /*
  ============================================================================
  Name        : avion.c
- Author      : 
+ Author      :
  Version     :
  Copyright   : Your copyright notice
  Description : avion in C, tp_aeropuerto
@@ -16,44 +16,48 @@
 #include "../headers/servidor.h"
 #include "../headers/mensaje.h"
 #include "../headers/avion.h"
+#include "../headers/archivo.h"
+#include "../headers/consola.h"
 
 
-int main() {
-	//Se crea un servidor con los siguientes datos:
-	struct sockaddr_in direccionServidor = crearServidor("127.0.0.1", "8080");
-	//direccionServidor = crearServidor("127.0.0.1", "8080");
+int main(int argc, char * argv[]) {
+	comprobarParametrosInicio(&argc);
+	system("clear");
 
-	//se pide un socket que devuelve un valor
-	int servidorTorreControl = socket(AF_INET, SOCK_STREAM, 0);
+	//VARIABLES
+	FILE * ptrArchivoConfigServ = NULL;
+	struct sockaddr_in direccionServidor;
+	int servidorTorreControl = 0;
+	int bytesRecibidos = 0;
+	int puertoServidor = 0;
+	char * ipServidor = malloc(sizeof(char)*LONG_IP_SERV);
+	char * msjServidor = malloc(sizeof(char)*LONG_MSJ_SERV); //Variable que envia/recive respuesta servidor
+	ST_AVION * avion = malloc(sizeof(ST_AVION));
 
-	if(connect(servidorTorreControl, (void *) &direccionServidor, sizeof(direccionServidor)) != 0){
-		perror("No se pudo conectar");
-		return 1;
-	}
+	//INICIALIZAR VARIABLES
+	inicializarMsjServidor(msjServidor);
+	memset(ipServidor, '\0', LONG_IP_SERV);
+	inicializarAvion(avion, argv);
 
+	comprobarAvion(avion);
 
-	//----------------------------------
-	char msjAServidor[LONG_MSG_SERV];
-	memset(msjAServidor, '\0', LONG_MSG_SERV);
+	ptrArchivoConfigServ = abrirArchivo("config.txt", "r");
 
-	ST_MENSAJE msj;
-	inicializarST_MENSAJE(&msj);
+	leerIpPuertoDeArchivo(ptrArchivoConfigServ, ipServidor, &puertoServidor);
 
-	crearSTMensaje(&msj, "127.0.0.1 8081", "127.0.0.1 8080", "123abc45, Boeing 747, 18000");
+	direccionServidor = crearServidor(ipServidor, &puertoServidor); //Se crea un servidor con los datos de config.txt
 
-	printf("Se envia origen: %s\n", msj.origen);
-	printf("Se envia destino: %s\n", msj.destino);
-	printf("Se envia mensaje: %s\n", msj.mensaje);
+	servidorTorreControl = socket(AF_INET, SOCK_STREAM, 0); //se pide un socket que devuelve un valor
 
-	strcpy(msjAServidor, msj.origen);
-	strcat(msjAServidor, ";");
-	strcat(msjAServidor, msj.destino);
-	strcat(msjAServidor, ";");
-	strcat(msjAServidor, msj.mensaje);
+	conectarConServidor(&servidorTorreControl, &direccionServidor);
 
-	printf("Mensaje: %s\n", msjAServidor);
+	iniciarMenuAvion(avion, msjServidor, &servidorTorreControl, &bytesRecibidos);
 
-	send(servidorTorreControl, msjAServidor, sizeof(char)*(LONG_MSG_SERV), MSG_WAITALL);
+	fclose(ptrArchivoConfigServ); //cierra archivo
+	free(ptrArchivoConfigServ); //Libera punteros
+	free(msjServidor);
+	free(ipServidor);
+	free(avion);
 
 	return EXIT_SUCCESS;
 }
